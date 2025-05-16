@@ -1,18 +1,25 @@
 using MottuApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using MottuApi.Repositories.Interfaces;
 
-public class MotoService
+namespace MottuApi.Services
 {
-    private readonly IMotoRepository _repository;
-    public MotoService(IMotoRepository repository)
+    public class MotoService
     {
-        _repository = repository;
-    }
+        private readonly IMotoRepository _repository;
+        private readonly IMapper _mapper;
+        public MotoService(IMotoRepository repository, IMapper mapper)
+        {
+            _repository = repository;
+            _mapper = mapper;
+        }
 
-    public Task<IEnumerable<Moto>> GetAllAsync() => _repository.GetAllAsync();
-    public Task<Moto> GetByIdAsync(int id) => _repository.GetByIdAsync(id);
-    public Task<Moto> AddAsync(Moto moto) => _repository.AddAsync(moto);
-    public Task<bool> UpdateAsync(Moto moto) => _repository.UpdateAsync(moto);
-    public Task<bool> DeleteAsync(int id) => _repository.DeleteAsync(id);
+        public Task<IEnumerable<Moto>> GetAllAsync() => _repository.GetAllAsync();
+        public Task<Moto> GetByIdAsync(int id) => _repository.GetByIdAsync(id);
+        public Task<Moto> AddAsync(Moto moto) => _repository.AddAsync(moto);
+        public Task<bool> UpdateAsync(Moto moto) => _repository.UpdateAsync(moto);
+        public Task<bool> DeleteAsync(int id) => _repository.DeleteAsync(id);
+    }
 }

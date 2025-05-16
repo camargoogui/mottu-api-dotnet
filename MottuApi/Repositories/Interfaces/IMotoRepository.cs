@@ -2,11 +2,14 @@ using MottuApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public interface IMotoRepository
+namespace MottuApi.Repositories.Interfaces
 {
-    Task<IEnumerable<Moto>> GetAllAsync();
-    Task<Moto> GetByIdAsync(int id);
-    Task<Moto> AddAsync(Moto moto);
-    Task<bool> UpdateAsync(Moto moto);
-    Task<bool> DeleteAsync(int id);
+    public interface IMotoRepository
+    {
+        Task<IEnumerable<Moto>> GetAllAsync();
+        Task<Moto> GetByIdAsync(int id);
+        Task<Moto> AddAsync(Moto moto);
+        Task<bool> UpdateAsync(Moto moto);
+        Task<bool> DeleteAsync(int id);
+    }
 }

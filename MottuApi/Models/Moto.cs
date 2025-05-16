@@ -1,9 +1,12 @@
 // Models/Moto.cs
-public class Moto
+namespace MottuApi.Models
 {
-    public int Id { get; set; }
-    public string Placa { get; set; }
-    public string Modelo { get; set; }
-    public int FilialId { get; set; }
-    public Filial Filial { get; set; }
+    public class Moto
+    {
+        public int Id { get; set; }
+        public string Placa { get; set; }
+        public string Modelo { get; set; }
+        public int FilialId { get; set; }
+        public Filial Filial { get; set; }
+    }
 }

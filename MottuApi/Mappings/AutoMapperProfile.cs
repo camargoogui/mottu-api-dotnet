@@ -2,14 +2,17 @@ using AutoMapper;
 using MottuApi.Models;
 using MottuApi.DTOs;
 
-public class AutoMapperProfile : Profile
+namespace MottuApi.Mappings
 {
-    public AutoMapperProfile()
+    public class AutoMapperProfile : Profile
     {
-        CreateMap<Moto, MotoDto>()
-            .ForMember(dest => dest.FilialNome, opt => opt.MapFrom(src => src.Filial.Nome));
-        CreateMap<MotoDto, Moto>();
-        CreateMap<Filial, FilialDto>();
-        CreateMap<FilialDto, Filial>();
+        public AutoMapperProfile()
+        {
+            CreateMap<Moto, MotoDto>()
+                .ForMember(dest => dest.FilialNome, opt => opt.MapFrom(src => src.Filial.Nome));
+            CreateMap<MotoDto, Moto>();
+            CreateMap<Filial, FilialDto>();
+            CreateMap<FilialDto, Filial>();
+        }
     }
 }
