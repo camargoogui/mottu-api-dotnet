@@ -14,7 +14,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-// Repositórios e Services
+// Repositórios e Serviços
 builder.Services.AddScoped<IFilialRepository, FilialRepository>();
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
 builder.Services.AddScoped<FilialService>();

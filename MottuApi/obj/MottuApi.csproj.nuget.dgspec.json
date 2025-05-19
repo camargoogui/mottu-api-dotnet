@@ -1,37 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.NET - Challenge\\MottuApi\\MottuApi.csproj": {}
+    "C:\\Users\\usuar\\Downloads\\.NET - Challenge\\MottuApi\\MottuApi.csproj": {}
   },
   "projects": {
-    "D:\\.NET - Challenge\\MottuApi\\MottuApi.csproj": {
+    "C:\\Users\\usuar\\Downloads\\.NET - Challenge\\MottuApi\\MottuApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET - Challenge\\MottuApi\\MottuApi.csproj",
+        "projectUniqueName": "C:\\Users\\usuar\\Downloads\\.NET - Challenge\\MottuApi\\MottuApi.csproj",
         "projectName": "MottuApi",
-        "projectPath": "D:\\.NET - Challenge\\MottuApi\\MottuApi.csproj",
-        "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET - Challenge\\MottuApi\\obj\\",
+        "projectPath": "C:\\Users\\usuar\\Downloads\\.NET - Challenge\\MottuApi\\MottuApi.csproj",
+        "packagesPath": "C:\\Users\\usuar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\usuar\\Downloads\\.NET - Challenge\\MottuApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\usuar\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -44,12 +37,11 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -61,25 +53,25 @@
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[9.0.2, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.5, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.5, )"
+              "version": "[8.0.4, )"
             },
             "Oracle.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.23.80, )"
+              "version": "[8.21.121, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[8.1.1, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -101,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -30,37 +30,52 @@ namespace MottuApi.Controllers
         public async Task<ActionResult<FilialDto>> GetById(int id)
         {
             var filial = await _service.GetByIdAsync(id);
-            if (filial == null) return NotFound();
+            if (filial == null) return NotFound("Filial não encontrada");
             return Ok(_mapper.Map<FilialDto>(filial));
         }
 
         [HttpPost]
         public async Task<ActionResult<FilialDto>> Create(FilialDto dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.Nome)) return BadRequest();
-            var filial = _mapper.Map<Filial>(dto);
-            var created = await _service.AddAsync(filial);
-            var result = _mapper.Map<FilialDto>(created);
-            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+            try
+            {
+                var filial = new Filial(dto.Nome);
+                var created = await _service.AddAsync(filial);
+                var result = _mapper.Map<FilialDto>(created);
+                return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, FilialDto dto)
         {
-            if (id != dto.Id) return BadRequest();
+            if (id != dto.Id) return BadRequest("ID da URL difere do corpo da requisição");
+
             var filial = await _service.GetByIdAsync(id);
-            if (filial == null) return NotFound();
-            filial.Nome = dto.Nome;
-            var updated = await _service.UpdateAsync(filial);
-            if (!updated) return BadRequest();
-            return NoContent();
+            if (filial == null) return NotFound("Filial não encontrada");
+
+            try
+            {
+                filial.SetNome(dto.Nome);
+                var updated = await _service.UpdateAsync(filial);
+                if (!updated) return BadRequest("Erro ao atualizar a filial");
+                return NoContent();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var deleted = await _service.DeleteAsync(id);
-            if (!deleted) return NotFound();
+            if (!deleted) return NotFound("Filial não encontrada");
             return NoContent();
         }
     }

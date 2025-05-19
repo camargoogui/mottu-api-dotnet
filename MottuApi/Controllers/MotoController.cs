@@ -1,4 +1,3 @@
-// Controllers/MotoController.cs
 using Microsoft.AspNetCore.Mvc;
 using MottuApi.DTOs;
 using MottuApi.Models;
@@ -33,7 +32,7 @@ namespace MottuApi.Controllers
         public async Task<ActionResult<MotoDto>> GetById(int id)
         {
             var moto = await _service.GetByIdAsync(id);
-            if (moto == null) return NotFound();
+            if (moto == null) return NotFound("Moto não encontrada");
             return Ok(_mapper.Map<MotoDto>(moto));
         }
 
@@ -56,34 +55,50 @@ namespace MottuApi.Controllers
         [HttpPost]
         public async Task<ActionResult<MotoDto>> Create(MotoDto dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.Placa) || string.IsNullOrWhiteSpace(dto.Modelo)) return BadRequest();
             var filial = await _filialService.GetByIdAsync(dto.FilialId);
             if (filial == null) return BadRequest("Filial não encontrada");
-            var moto = _mapper.Map<Moto>(dto);
-            var created = await _service.AddAsync(moto);
-            var result = _mapper.Map<MotoDto>(created);
-            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+
+            try
+            {
+                var moto = new Moto(dto.Placa, dto.Modelo, dto.FilialId);
+                var created = await _service.AddAsync(moto);
+                var result = _mapper.Map<MotoDto>(created);
+                return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, MotoDto dto)
         {
-            if (id != dto.Id) return BadRequest();
+            if (id != dto.Id) return BadRequest("ID da URL difere do corpo da requisição");
+
             var moto = await _service.GetByIdAsync(id);
-            if (moto == null) return NotFound();
-            moto.Placa = dto.Placa;
-            moto.Modelo = dto.Modelo;
-            moto.FilialId = dto.FilialId;
-            var updated = await _service.UpdateAsync(moto);
-            if (!updated) return BadRequest();
-            return NoContent();
+            if (moto == null) return NotFound("Moto não encontrada");
+
+            try
+            {
+                moto.SetPlaca(dto.Placa);
+                moto.SetModelo(dto.Modelo);
+                moto.SetFilial(dto.FilialId);
+                var updated = await _service.UpdateAsync(moto);
+                if (!updated) return BadRequest("Erro ao atualizar a moto");
+                return NoContent();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var deleted = await _service.DeleteAsync(id);
-            if (!deleted) return NotFound();
+            if (!deleted) return NotFound("Moto não encontrada");
             return NoContent();
         }
     }
