@@ -41,7 +41,7 @@ Este projeto faz parte do CP2 da disciplina Advanced Business Development with .
 1. **Clone o repositório:**
 
    ```sh
-   git clone hhttps://github.com/camargoogui/DOTNET---Challenge.git
+   git clone https://github.com/camargoogui/DOTNET---Challenge.git
    cd DOTNET---Challenge
    ```
 
