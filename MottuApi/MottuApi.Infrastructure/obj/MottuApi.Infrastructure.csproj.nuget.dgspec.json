@@ -1,37 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.NET - Challenge\\MottuApi\\MottuApi.Infrastructure\\MottuApi.Infrastructure.csproj": {}
+    "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\.NET - Challenge\\MottuApi\\MottuApi.Infrastructure\\MottuApi.Infrastructure.csproj": {
+    "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET - Challenge\\MottuApi\\MottuApi.Infrastructure\\MottuApi.Infrastructure.csproj",
-        "projectName": "MottuApi.Infrastructure",
-        "projectPath": "D:\\.NET - Challenge\\MottuApi\\MottuApi.Infrastructure\\MottuApi.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET - Challenge\\MottuApi\\MottuApi.Infrastructure\\obj\\",
+        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj",
+        "projectName": "MottuApi.Domain",
+        "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj",
+        "packagesPath": "/Users/camargoogui/.nuget/packages/",
+        "outputPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/camargoogui/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -44,12 +37,11 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",
@@ -66,7 +58,79 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj",
+        "projectName": "MottuApi.Infrastructure",
+        "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj",
+        "packagesPath": "/Users/camargoogui/.nuget/packages/",
+        "outputPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/camargoogui/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
+                "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Oracle.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.21.121, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

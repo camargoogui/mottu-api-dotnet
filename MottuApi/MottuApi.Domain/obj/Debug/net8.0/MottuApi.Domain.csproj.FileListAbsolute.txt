@@ -1,0 +1,12 @@
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/bin/Debug/net8.0/MottuApi.Domain.deps.json
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/bin/Debug/net8.0/MottuApi.Domain.dll
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/bin/Debug/net8.0/MottuApi.Domain.pdb
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/MottuApi.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/MottuApi.Domain.AssemblyInfoInputs.cache
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/MottuApi.Domain.AssemblyInfo.cs
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/MottuApi.Domain.csproj.CoreCompileInputs.cache
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/MottuApi.Domain.sourcelink.json
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/MottuApi.Domain.dll
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/refint/MottuApi.Domain.dll
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/MottuApi.Domain.pdb
+/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/Debug/net8.0/ref/MottuApi.Domain.dll

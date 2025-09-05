@@ -1,6 +1,0 @@
-@MottuApi_HostAddress = http://localhost:5231
-
-GET {{MottuApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

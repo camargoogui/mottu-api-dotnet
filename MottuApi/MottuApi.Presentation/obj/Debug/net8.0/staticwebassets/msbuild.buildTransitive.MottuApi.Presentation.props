@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/MottuApi.Presentation.props" />
+</Project>
