@@ -4,6 +4,11 @@
 
 A **Mottu API** é uma aplicação desenvolvida em .NET 8 que implementa os princípios de **Clean Architecture**, **Domain-Driven Design (DDD)** e **Clean Code** para gerenciar motos e filiais da empresa Mottu.
 
+## 👥 Integrantes
+
+- Guilherme Camargo - RM555166 - 2TDSPM
+- Icaro Albuquerque - RM555161 - 2TDSPM
+
 ## 🏗️ Arquitetura
 
 O projeto segue a **Clean Architecture** com separação clara de responsabilidades em 4 camadas:
@@ -361,12 +366,6 @@ curl http://localhost:5000/api/filial
 open http://localhost:5000
 ```
 
-## 👥 Autores
-
-- **Nome do Aluno 1** - [@usuario1](https://github.com/usuario1)
-- **Nome do Aluno 2** - [@usuario2](https://github.com/usuario2)
-- **Nome do Aluno 3** - [@usuario3](https://github.com/usuario3)
-
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
@@ -388,4 +387,5 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ---
 
 > "Código limpo sempre parece que foi escrito por alguém que se importa."  
+
 > — **Robert C. Martin (Uncle Bob)**
