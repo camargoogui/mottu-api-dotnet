@@ -7,7 +7,7 @@ A **Mottu API** é uma aplicação desenvolvida em .NET 8 que implementa os prin
 ## 👥 Integrantes
 
 - Guilherme Camargo - RM555166 - 2TDSPM
-- Icaro Albuquerque - RM555161 - 2TDSPM
+- Icaro Albuquerque - RM555131 - 2TDSPM
 
 ## 🏗️ Arquitetura
 
@@ -389,3 +389,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 > "Código limpo sempre parece que foi escrito por alguém que se importa."  
 
 > — **Robert C. Martin (Uncle Bob)**
+
