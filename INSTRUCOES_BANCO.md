@@ -10,11 +10,11 @@
 
 ### **Opção 1: Executar via EF Core (Recomendado)**
 ```bash
-# Navegar para a pasta Infrastructure
-cd MottuApi/MottuApi.Infrastructure
+# Navegar para a pasta Presentation
+cd MottuApi/MottuApi.Presentation
 
 # Aplicar migrations
-dotnet ef database update --startup-project ../MottuApi.Presentation
+dotnet ef database update
 ```
 
 ### **Opção 2: Executar Script SQL Manual**
@@ -71,7 +71,7 @@ Verifique se a string de conexão está correta no `appsettings.json`:
 ```json
 {
   "ConnectionStrings": {
-    "OracleConnection": "User Id=SEU_USUARIO;Password=SUA_SENHA;Data Source=localhost:1521/XE;"
+    "OracleConnection": "User Id=SEU_USUARIO;Password=SUA_SENHA;Data Source=oracle.fiap.com.br:1521/ORCL;"
   }
 }
 ```
@@ -81,6 +81,23 @@ Verifique se a string de conexão está correta no `appsettings.json`:
 O script inclui dados de exemplo:
 - **2 Filiais**: São Paulo e Rio de Janeiro
 - **3 Motos**: Honda CG 160, Yamaha Fazer 250, Honda Biz 125
+
+## 🆕 Novas Funcionalidades Implementadas
+
+### **Paginação**
+- Todos os endpoints de listagem suportam paginação
+- Parâmetros: `?page=1&pageSize=10`
+- Resposta inclui metadados de paginação
+
+### **HATEOAS**
+- Links de navegação em todas as respostas
+- Facilita descoberta da API
+- Melhora experiência do desenvolvedor
+
+### **Validações**
+- Data Annotations para validação de modelos
+- Validação automática de campos obrigatórios
+- Mensagens de erro detalhadas
 
 ## ✅ Verificação
 

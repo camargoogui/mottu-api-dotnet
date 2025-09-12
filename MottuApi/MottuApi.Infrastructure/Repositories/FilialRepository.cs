@@ -30,6 +30,20 @@ namespace MottuApi.Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Filial>> GetPagedAsync(int page, int pageSize)
+        {
+            return await _context.Filiais
+                .Include(f => f.Motos)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await _context.Filiais.CountAsync();
+        }
+
         public async Task<Filial> AddAsync(Filial filial)
         {
             await _context.Filiais.AddAsync(filial);

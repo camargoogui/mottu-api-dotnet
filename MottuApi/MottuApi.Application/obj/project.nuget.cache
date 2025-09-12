@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rQlCFuE9fDo=",
+  "dgSpecHash": "vzuzA8EDmn0=",
   "success": true,
-  "projectFilePath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Application/MottuApi.Application.csproj",
+  "projectFilePath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Application/MottuApi.Application.csproj",
   "expectedPackageFiles": [
     "/Users/camargoogui/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/camargoogui/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512"

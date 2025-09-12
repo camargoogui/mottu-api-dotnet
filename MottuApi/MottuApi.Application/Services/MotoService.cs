@@ -47,6 +47,35 @@ namespace MottuApi.Application.Services
             return _mapper.Map<IEnumerable<MotoDTO>>(motos);
         }
 
+        public async Task<PagedResultDTO<MotoDTO>> GetAllPagedAsync(int page, int pageSize)
+        {
+            var totalCount = await _motoRepository.GetCountAsync();
+            var motos = await _motoRepository.GetPagedAsync(page, pageSize);
+            var motosDTO = _mapper.Map<IEnumerable<MotoDTO>>(motos);
+
+            var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
+
+            var result = new PagedResultDTO<MotoDTO>
+            {
+                Data = motosDTO.ToList(),
+                Page = page,
+                PageSize = pageSize,
+                TotalCount = totalCount,
+                TotalPages = totalPages,
+                HasNext = page < totalPages,
+                HasPrevious = page > 1
+            };
+
+            // Adicionar links HATEOAS
+            result.Links.Add(new LinkDTO { Href = $"/api/moto?page={page}&pageSize={pageSize}", Rel = "self", Method = "GET" });
+            if (result.HasNext)
+                result.Links.Add(new LinkDTO { Href = $"/api/moto?page={page + 1}&pageSize={pageSize}", Rel = "next", Method = "GET" });
+            if (result.HasPrevious)
+                result.Links.Add(new LinkDTO { Href = $"/api/moto?page={page - 1}&pageSize={pageSize}", Rel = "previous", Method = "GET" });
+
+            return result;
+        }
+
         public async Task<IEnumerable<MotoDTO>> GetByFilialIdAsync(int filialId)
         {
             if (!await _filialRepository.ExistsAsync(filialId))

@@ -1,0 +1,6 @@
+{
+  "MottuApi.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/camargoogui\/DOTNET---Challenge-1\/MottuApi\/MottuApi.Application",
+  "MottuApi.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/camargoogui\/DOTNET---Challenge-1\/MottuApi\/MottuApi.Domain",
+  "MottuApi.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/camargoogui\/DOTNET---Challenge-1\/MottuApi\/MottuApi.Infrastructure",
+  "MottuApi.Presentation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/camargoogui\/DOTNET---Challenge-1\/MottuApi\/MottuApi.Presentation"
+}

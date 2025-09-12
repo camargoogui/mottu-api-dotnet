@@ -9,6 +9,7 @@ namespace MottuApi.Application.Interfaces
         Task<MotoDTO> GetByIdAsync(int id);
         Task<MotoDTO> GetByPlacaAsync(string placa);
         Task<IEnumerable<MotoDTO>> GetAllAsync();
+        Task<PagedResultDTO<MotoDTO>> GetAllPagedAsync(int page, int pageSize);
         Task<IEnumerable<MotoDTO>> GetByFilialIdAsync(int filialId);
         Task<MotoDTO> CreateAsync(CreateMotoDTO createMotoDTO);
         Task<MotoDTO> UpdateAsync(int id, UpdateMotoDTO updateMotoDTO);

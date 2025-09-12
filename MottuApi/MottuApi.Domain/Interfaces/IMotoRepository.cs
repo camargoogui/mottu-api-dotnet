@@ -9,6 +9,8 @@ namespace MottuApi.Domain.Interfaces
         Task<Moto> GetByIdAsync(int id);
         Task<Moto> GetByPlacaAsync(string placa);
         Task<IEnumerable<Moto>> GetAllAsync();
+        Task<IEnumerable<Moto>> GetPagedAsync(int page, int pageSize);
+        Task<int> GetCountAsync();
         Task<IEnumerable<Moto>> GetByFilialIdAsync(int filialId);
         Task<Moto> AddAsync(Moto moto);
         Task UpdateAsync(Moto moto);

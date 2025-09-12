@@ -8,6 +8,9 @@ using MottuApi.Domain.Exceptions;
 
 namespace MottuApi.Presentation.Controllers
 {
+    /// <summary>
+    /// Controller para gerenciamento de filiais da Mottu
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class FilialController : ControllerBase
@@ -19,13 +22,28 @@ namespace MottuApi.Presentation.Controllers
             _filialService = filialService;
         }
 
+        /// <summary>
+        /// Lista todas as filiais com paginação
+        /// </summary>
+        /// <param name="page">Número da página (padrão: 1)</param>
+        /// <param name="pageSize">Tamanho da página (padrão: 10, máximo: 100)</param>
+        /// <returns>Lista paginada de filiais</returns>
+        /// <response code="200">Retorna a lista paginada de filiais</response>
+        /// <response code="500">Erro interno do servidor</response>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FilialDTO>>> GetAll()
+        [ProducesResponseType(typeof(PagedResultDTO<FilialDTO>), 200)]
+        [ProducesResponseType(500)]
+        public async Task<ActionResult<PagedResultDTO<FilialDTO>>> GetAll(
+            [FromQuery] int page = 1, 
+            [FromQuery] int pageSize = 10)
         {
             try
             {
-                var filiais = await _filialService.GetAllAsync();
-                return Ok(filiais);
+                if (page < 1) page = 1;
+                if (pageSize < 1 || pageSize > 100) pageSize = 10;
+
+                var result = await _filialService.GetAllPagedAsync(page, pageSize);
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -56,6 +74,11 @@ namespace MottuApi.Presentation.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var filial = await _filialService.CreateAsync(createFilialDTO);
                 return CreatedAtAction(nameof(GetById), new { id = filial.Id }, filial);
             }
@@ -74,6 +97,11 @@ namespace MottuApi.Presentation.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var filial = await _filialService.UpdateAsync(id, updateFilialDTO);
                 return Ok(filial);
             }

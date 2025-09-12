@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MottuApi.Presentation</name>
+    </assembly>
+    <members>
+        <member name="T:MottuApi.Presentation.Controllers.FilialController">
+            <summary>
+            Controller para gerenciamento de filiais da Mottu
+            </summary>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.FilialController.GetAll(System.Int32,System.Int32)">
+            <summary>
+            Lista todas as filiais com paginação
+            </summary>
+            <param name="page">Número da página (padrão: 1)</param>
+            <param name="pageSize">Tamanho da página (padrão: 10, máximo: 100)</param>
+            <returns>Lista paginada de filiais</returns>
+            <response code="200">Retorna a lista paginada de filiais</response>
+            <response code="500">Erro interno do servidor</response>
+        </member>
+    </members>
+</doc>

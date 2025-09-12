@@ -20,12 +20,17 @@ namespace MottuApi.Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MotoDTO>>> GetAll()
+        public async Task<ActionResult<PagedResultDTO<MotoDTO>>> GetAll(
+            [FromQuery] int page = 1, 
+            [FromQuery] int pageSize = 10)
         {
             try
             {
-                var motos = await _motoService.GetAllAsync();
-                return Ok(motos);
+                if (page < 1) page = 1;
+                if (pageSize < 1 || pageSize > 100) pageSize = 10;
+
+                var result = await _motoService.GetAllPagedAsync(page, pageSize);
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -92,6 +97,11 @@ namespace MottuApi.Presentation.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var moto = await _motoService.CreateAsync(createMotoDTO);
                 return CreatedAtAction(nameof(GetById), new { id = moto.Id }, moto);
             }
@@ -110,6 +120,11 @@ namespace MottuApi.Presentation.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var moto = await _motoService.UpdateAsync(id, updateMotoDTO);
                 return Ok(moto);
             }

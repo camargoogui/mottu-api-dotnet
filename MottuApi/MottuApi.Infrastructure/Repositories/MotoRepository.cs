@@ -37,6 +37,20 @@ namespace MottuApi.Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<Moto>> GetPagedAsync(int page, int pageSize)
+        {
+            return await _context.Motos
+                .Include(m => m.Filial)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await _context.Motos.CountAsync();
+        }
+
         public async Task<IEnumerable<Moto>> GetByFilialIdAsync(int filialId)
         {
             return await _context.Motos

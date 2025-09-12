@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Presentation/MottuApi.Presentation.csproj": {}
+    "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Presentation/MottuApi.Presentation.csproj": {}
   },
   "projects": {
-    "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Application/MottuApi.Application.csproj": {
+    "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Application/MottuApi.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Application/MottuApi.Application.csproj",
+        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Application/MottuApi.Application.csproj",
         "projectName": "MottuApi.Application",
-        "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Application/MottuApi.Application.csproj",
+        "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Application/MottuApi.Application.csproj",
         "packagesPath": "/Users/camargoogui/.nuget/packages/",
-        "outputPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Application/obj/",
+        "outputPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/camargoogui/.nuget/NuGet/NuGet.Config"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
-                "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj"
+              "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
+                "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj"
               }
             }
           }
@@ -72,14 +72,14 @@
         }
       }
     },
-    "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
+    "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj",
+        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj",
         "projectName": "MottuApi.Domain",
-        "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj",
+        "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj",
         "packagesPath": "/Users/camargoogui/.nuget/packages/",
-        "outputPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/obj/",
+        "outputPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/camargoogui/.nuget/NuGet/NuGet.Config"
@@ -130,14 +130,14 @@
         }
       }
     },
-    "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj": {
+    "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj",
+        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj",
         "projectName": "MottuApi.Infrastructure",
-        "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj",
+        "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj",
         "packagesPath": "/Users/camargoogui/.nuget/packages/",
-        "outputPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/obj/",
+        "outputPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/camargoogui/.nuget/NuGet/NuGet.Config"
@@ -152,8 +152,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
-                "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj"
+              "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
+                "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj"
               }
             }
           }
@@ -202,14 +202,14 @@
         }
       }
     },
-    "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Presentation/MottuApi.Presentation.csproj": {
+    "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Presentation/MottuApi.Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Presentation/MottuApi.Presentation.csproj",
+        "projectUniqueName": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Presentation/MottuApi.Presentation.csproj",
         "projectName": "MottuApi.Presentation",
-        "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Presentation/MottuApi.Presentation.csproj",
+        "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Presentation/MottuApi.Presentation.csproj",
         "packagesPath": "/Users/camargoogui/.nuget/packages/",
-        "outputPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Presentation/obj/",
+        "outputPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Presentation/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/camargoogui/.nuget/NuGet/NuGet.Config"
@@ -224,14 +224,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Application/MottuApi.Application.csproj": {
-                "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Application/MottuApi.Application.csproj"
+              "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Application/MottuApi.Application.csproj": {
+                "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Application/MottuApi.Application.csproj"
               },
-              "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
-                "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj"
+              "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj": {
+                "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Domain/MottuApi.Domain.csproj"
               },
-              "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj": {
-                "projectPath": "/Users/camargoogui/DOTNET---Challenge/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj"
+              "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj": {
+                "projectPath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj"
               }
             }
           }

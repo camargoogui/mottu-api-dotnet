@@ -8,6 +8,7 @@ namespace MottuApi.Application.Interfaces
     {
         Task<FilialDTO> GetByIdAsync(int id);
         Task<IEnumerable<FilialDTO>> GetAllAsync();
+        Task<PagedResultDTO<FilialDTO>> GetAllPagedAsync(int page, int pageSize);
         Task<FilialDTO> CreateAsync(CreateFilialDTO createFilialDTO);
         Task<FilialDTO> UpdateAsync(int id, UpdateFilialDTO updateFilialDTO);
         Task DeleteAsync(int id);

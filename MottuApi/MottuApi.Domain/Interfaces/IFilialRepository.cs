@@ -8,6 +8,8 @@ namespace MottuApi.Domain.Interfaces
     {
         Task<Filial> GetByIdAsync(int id);
         Task<IEnumerable<Filial>> GetAllAsync();
+        Task<IEnumerable<Filial>> GetPagedAsync(int page, int pageSize);
+        Task<int> GetCountAsync();
         Task<Filial> AddAsync(Filial filial);
         Task UpdateAsync(Filial filial);
         Task DeleteAsync(int id);

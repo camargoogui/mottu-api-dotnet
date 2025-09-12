@@ -36,6 +36,35 @@ namespace MottuApi.Application.Services
             return _mapper.Map<IEnumerable<FilialDTO>>(filiais);
         }
 
+        public async Task<PagedResultDTO<FilialDTO>> GetAllPagedAsync(int page, int pageSize)
+        {
+            var totalCount = await _filialRepository.GetCountAsync();
+            var filiais = await _filialRepository.GetPagedAsync(page, pageSize);
+            var filiaisDTO = _mapper.Map<IEnumerable<FilialDTO>>(filiais);
+
+            var totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
+
+            var result = new PagedResultDTO<FilialDTO>
+            {
+                Data = filiaisDTO.ToList(),
+                Page = page,
+                PageSize = pageSize,
+                TotalCount = totalCount,
+                TotalPages = totalPages,
+                HasNext = page < totalPages,
+                HasPrevious = page > 1
+            };
+
+            // Adicionar links HATEOAS
+            result.Links.Add(new LinkDTO { Href = $"/api/filial?page={page}&pageSize={pageSize}", Rel = "self", Method = "GET" });
+            if (result.HasNext)
+                result.Links.Add(new LinkDTO { Href = $"/api/filial?page={page + 1}&pageSize={pageSize}", Rel = "next", Method = "GET" });
+            if (result.HasPrevious)
+                result.Links.Add(new LinkDTO { Href = $"/api/filial?page={page - 1}&pageSize={pageSize}", Rel = "previous", Method = "GET" });
+
+            return result;
+        }
+
         public async Task<FilialDTO> CreateAsync(CreateFilialDTO createFilialDTO)
         {
             if (await _filialRepository.ExistsByNomeAsync(createFilialDTO.Nome))
