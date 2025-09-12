@@ -99,59 +99,6 @@ namespace MottuApi.Infrastructure.Migrations
                     b.ToTable("Motos");
                 });
 
-            modelBuilder.Entity("MottuApi.Domain.Entities.Usuario", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("NUMBER(1)");
-
-                    b.Property<string>("Cpf")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("NVARCHAR2(11)");
-
-                    b.Property<DateTime?>("DataAtualizacao")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("NVARCHAR2(150)");
-
-                    b.Property<int?>("FilialId")
-                        .HasColumnType("NUMBER(10)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("NVARCHAR2(100)");
-
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("NVARCHAR2(15)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Cpf")
-                        .IsUnique();
-
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-                    b.HasIndex("FilialId");
-
-                    b.ToTable("Usuarios");
-                });
-
             modelBuilder.Entity("MottuApi.Domain.Entities.Filial", b =>
                 {
                     b.OwnsOne("MottuApi.Domain.ValueObjects.Endereco", "Endereco", b1 =>
@@ -213,16 +160,6 @@ namespace MottuApi.Infrastructure.Migrations
                         .HasForeignKey("FilialId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Filial");
-                });
-
-            modelBuilder.Entity("MottuApi.Domain.Entities.Usuario", b =>
-                {
-                    b.HasOne("MottuApi.Domain.Entities.Filial", "Filial")
-                        .WithMany()
-                        .HasForeignKey("FilialId")
-                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Filial");
                 });

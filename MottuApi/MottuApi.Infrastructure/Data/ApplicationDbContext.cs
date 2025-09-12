@@ -12,7 +12,6 @@ namespace MottuApi.Infrastructure.Data
 
         public DbSet<Filial> Filiais { get; set; }
         public DbSet<Moto> Motos { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,21 +44,6 @@ namespace MottuApi.Infrastructure.Data
                     .WithMany(f => f.Motos)
                     .HasForeignKey(e => e.FilialId)
                     .OnDelete(DeleteBehavior.Restrict);
-            });
-
-            modelBuilder.Entity<Usuario>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Nome).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.Email).IsRequired().HasMaxLength(150);
-                entity.Property(e => e.Cpf).IsRequired().HasMaxLength(11);
-                entity.Property(e => e.Telefone).IsRequired().HasMaxLength(15);
-                entity.HasIndex(e => e.Email).IsUnique();
-                entity.HasIndex(e => e.Cpf).IsUnique();
-                entity.HasOne(e => e.Filial)
-                    .WithMany()
-                    .HasForeignKey(e => e.FilialId)
-                    .OnDelete(DeleteBehavior.SetNull);
             });
         }
     }

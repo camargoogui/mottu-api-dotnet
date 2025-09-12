@@ -33,55 +33,48 @@ MottuApi/
 ├── MottuApi.Presentation/          # Camada de Apresentação
 │   ├── Controllers/
 │   │   ├── FilialController.cs     # 7 endpoints para filiais
-│   │   ├── MotoController.cs       # 9 endpoints para motos
-│   │   └── UsuarioController.cs    # 9 endpoints para usuários
+│   │   └── MotoController.cs       # 9 endpoints para motos
 │   ├── Program.cs                  # Configuração da aplicação
 │   ├── appsettings.json           # Configurações
 │   └── Properties/
 ├── MottuApi.Application/           # Camada de Aplicação
 │   ├── DTOs/
 │   │   ├── FilialDTO.cs           # DTOs para filiais
-│   │   ├── MotoDTO.cs             # DTOs para motos
-│   │   └── UsuarioDTO.cs          # DTOs para usuários
+│   │   └── MotoDTO.cs             # DTOs para motos
 │   ├── Interfaces/
 │   │   ├── IFilialService.cs      # Interface do serviço de filiais
-│   │   ├── IMotoService.cs        # Interface do serviço de motos
-│   │   └── IUsuarioService.cs     # Interface do serviço de usuários
+│   │   └── IMotoService.cs        # Interface do serviço de motos
 │   ├── Services/
 │   │   ├── FilialService.cs       # Lógica de aplicação para filiais
-│   │   ├── MotoService.cs         # Lógica de aplicação para motos
-│   │   └── UsuarioService.cs      # Lógica de aplicação para usuários
+│   │   └── MotoService.cs         # Lógica de aplicação para motos
 │   └── Mappings/
 │       └── MappingProfile.cs      # Configuração do AutoMapper
 ├── MottuApi.Domain/               # Camada de Domínio
 │   ├── Entities/
 │   │   ├── Filial.cs              # Entidade rica (Agregado Raiz)
-│   │   ├── Moto.cs                # Entidade rica
-│   │   └── Usuario.cs             # Entidade rica
+│   │   └── Moto.cs                # Entidade rica
 │   ├── ValueObjects/
 │   │   └── Endereco.cs            # Value Object imutável
 │   ├── Exceptions/
 │   │   └── DomainException.cs     # Exceções de domínio
 │   └── Interfaces/
 │       ├── IFilialRepository.cs   # Interface do repositório de filiais
-│       ├── IMotoRepository.cs     # Interface do repositório de motos
-│       └── IUsuarioRepository.cs  # Interface do repositório de usuários
+│       └── IMotoRepository.cs     # Interface do repositório de motos
 └── MottuApi.Infrastructure/       # Camada de Infraestrutura
     ├── Data/
     │   └── ApplicationDbContext.cs # Contexto do EF Core
     ├── Repositories/
     │   ├── FilialRepository.cs    # Implementação do repositório de filiais
-    │   ├── MotoRepository.cs      # Implementação do repositório de motos
-    │   └── UsuarioRepository.cs   # Implementação do repositório de usuários
+    │   └── MotoRepository.cs      # Implementação do repositório de motos
     └── Migrations/                # Migrations do banco de dados
 ```
 
 ### 🎯 Domain-Driven Design (DDD)
 
-- **Entidades Ricas**: `Moto`, `Filial` e `Usuario` com comportamento encapsulado
-- **Agregado Raiz**: `Filial` como agregado raiz que gerencia suas motos e usuários
+- **Entidades Ricas**: `Moto` e `Filial` com comportamento encapsulado
+- **Agregado Raiz**: `Filial` como agregado raiz que gerencia suas motos
 - **Value Object**: `Endereco` como value object imutável
-- **Interfaces no Domínio**: `IFilialRepository`, `IMotoRepository` e `IUsuarioRepository`
+- **Interfaces no Domínio**: `IFilialRepository` e `IMotoRepository`
 
 ### 🧹 Clean Code
 
@@ -186,21 +179,6 @@ Acesse a documentação interativa do Swagger em:
 | DELETE | `/api/moto/{id}` | Excluir moto |
 | PATCH | `/api/moto/{id}/disponivel` | Marcar moto como disponível |
 | PATCH | `/api/moto/{id}/indisponivel` | Marcar moto como indisponível |
-
-#### 👥 Usuários
-
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/api/usuario` | Listar todos os usuários |
-| GET | `/api/usuario/{id}` | Buscar usuário por ID |
-| GET | `/api/usuario/por-email?email=user@email.com` | Buscar usuário por email |
-| GET | `/api/usuario/por-cpf?cpf=12345678901` | Buscar usuário por CPF |
-| GET | `/api/usuario/por-filial/{filialId}` | Listar usuários de uma filial |
-| POST | `/api/usuario` | Criar novo usuário |
-| PUT | `/api/usuario/{id}` | Atualizar usuário |
-| DELETE | `/api/usuario/{id}` | Excluir usuário |
-| PATCH | `/api/usuario/{id}/ativar` | Ativar usuário |
-| PATCH | `/api/usuario/{id}/desativar` | Desativar usuário |
 
 ## 📝 Exemplos de Uso
 
@@ -352,10 +330,9 @@ Se preferir configurar o banco manualmente:
 - [x] Script SQL para criação manual
 
 ### ✅ API RESTful
-- [x] 25 endpoints implementados
+- [x] 16 endpoints implementados
 - [x] Filiais: 7 endpoints (CRUD + ativar/desativar)
 - [x] Motos: 9 endpoints (CRUD + disponibilidade + busca por placa/filial)
-- [x] Usuários: 9 endpoints (CRUD + ativar/desativar + busca por email/CPF)
 - [x] Tratamento de exceções
 - [x] Validações de domínio
 - [x] **Paginação** implementada em todos os endpoints de listagem
@@ -398,7 +375,7 @@ Se preferir configurar o banco manualmente:
 | **Clean Architecture** | ✅ | 4 camadas bem separadas |
 | **Domain-Driven Design** | ✅ | Entidades ricas + Value Objects |
 | **Clean Code** | ✅ | SRP, DRY, KISS, YAGNI aplicados |
-| **API RESTful** | ✅ | 25 endpoints funcionando |
+| **API RESTful** | ✅ | 16 endpoints funcionando |
 | **Paginação** | ✅ | Implementada em todos os listagens |
 | **HATEOAS** | ✅ | Links de navegação implementados |
 | **Swagger/OpenAPI** | ✅ | Documentação completa |

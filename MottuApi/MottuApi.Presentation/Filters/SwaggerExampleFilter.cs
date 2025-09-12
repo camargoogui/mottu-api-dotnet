@@ -60,27 +60,6 @@ namespace MottuApi.Presentation.Filters
                     ["cor"] = new OpenApiString("Azul")
                 };
             }
-            else if (context.Type == typeof(CreateUsuarioDTO))
-            {
-                schema.Example = new OpenApiObject
-                {
-                    ["nome"] = new OpenApiString("João Silva"),
-                    ["email"] = new OpenApiString("joao.silva@email.com"),
-                    ["cpf"] = new OpenApiString("12345678901"),
-                    ["telefone"] = new OpenApiString("(11) 99999-9999"),
-                    ["filialId"] = new OpenApiInteger(1)
-                };
-            }
-            else if (context.Type == typeof(UpdateUsuarioDTO))
-            {
-                schema.Example = new OpenApiObject
-                {
-                    ["nome"] = new OpenApiString("João Silva Santos"),
-                    ["email"] = new OpenApiString("joao.santos@email.com"),
-                    ["telefone"] = new OpenApiString("(11) 88888-8888"),
-                    ["filialId"] = new OpenApiInteger(1)
-                };
-            }
         }
     }
 }
