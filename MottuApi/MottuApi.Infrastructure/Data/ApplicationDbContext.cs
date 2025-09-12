@@ -12,6 +12,7 @@ namespace MottuApi.Infrastructure.Data
 
         public DbSet<Filial> Filiais { get; set; }
         public DbSet<Moto> Motos { get; set; }
+        public DbSet<Locacao> Locacoes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -42,6 +43,25 @@ namespace MottuApi.Infrastructure.Data
                 entity.Property(e => e.Cor).IsRequired().HasMaxLength(30);
                 entity.HasOne(e => e.Filial)
                     .WithMany(f => f.Motos)
+                    .HasForeignKey(e => e.FilialId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<Locacao>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.ClienteNome).IsRequired().HasMaxLength(100);
+                entity.Property(e => e.ClienteCpf).IsRequired().HasMaxLength(11);
+                entity.Property(e => e.ClienteTelefone).IsRequired().HasMaxLength(15);
+                entity.Property(e => e.ValorHora).HasColumnType("decimal(10,2)");
+                entity.Property(e => e.ValorTotal).HasColumnType("decimal(10,2)");
+                entity.Property(e => e.Status).HasConversion<int>();
+                entity.HasOne(e => e.Moto)
+                    .WithMany()
+                    .HasForeignKey(e => e.MotoId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Filial)
+                    .WithMany()
                     .HasForeignKey(e => e.FilialId)
                     .OnDelete(DeleteBehavior.Restrict);
             });

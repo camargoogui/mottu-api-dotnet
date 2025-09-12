@@ -19,5 +19,111 @@
             <response code="200">Retorna a lista paginada de filiais</response>
             <response code="500">Erro interno do servidor</response>
         </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.GetAll(System.Int32,System.Int32)">
+            <summary>
+            Lista todas as locações com paginação
+            </summary>
+            <param name="page">Número da página (padrão: 1)</param>
+            <param name="pageSize">Tamanho da página (padrão: 10)</param>
+            <returns>Lista paginada de locações</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.GetById(System.Int32)">
+            <summary>
+            Busca uma locação por ID
+            </summary>
+            <param name="id">ID da locação</param>
+            <returns>Dados da locação</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.GetByMotoId(System.Int32)">
+            <summary>
+            Lista locações de uma moto específica
+            </summary>
+            <param name="motoId">ID da moto</param>
+            <returns>Lista de locações da moto</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.GetByFilialId(System.Int32)">
+            <summary>
+            Lista locações de uma filial específica
+            </summary>
+            <param name="filialId">ID da filial</param>
+            <returns>Lista de locações da filial</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.GetByClienteCpf(System.String)">
+            <summary>
+            Busca locações por CPF do cliente
+            </summary>
+            <param name="cpf">CPF do cliente</param>
+            <returns>Lista de locações do cliente</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.GetByPeriodo(System.DateTime,System.DateTime)">
+            <summary>
+            Busca locações por período
+            </summary>
+            <param name="inicio">Data de início</param>
+            <param name="fim">Data de fim</param>
+            <returns>Lista de locações no período</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.GetAtivas">
+            <summary>
+            Lista locações ativas
+            </summary>
+            <returns>Lista de locações ativas</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.GetFinalizadas">
+            <summary>
+            Lista locações finalizadas
+            </summary>
+            <returns>Lista de locações finalizadas</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.Create(MottuApi.Application.DTOs.CreateLocacaoDTO)">
+            <summary>
+            Cria uma nova locação
+            </summary>
+            <param name="createLocacaoDTO">Dados da locação</param>
+            <returns>Locação criada</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.Update(System.Int32,MottuApi.Application.DTOs.UpdateLocacaoDTO)">
+            <summary>
+            Atualiza uma locação existente
+            </summary>
+            <param name="id">ID da locação</param>
+            <param name="updateLocacaoDTO">Dados atualizados</param>
+            <returns>Locação atualizada</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.Delete(System.Int32)">
+            <summary>
+            Exclui uma locação
+            </summary>
+            <param name="id">ID da locação</param>
+            <returns>No Content</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.Iniciar(System.Int32)">
+            <summary>
+            Inicia uma locação
+            </summary>
+            <param name="id">ID da locação</param>
+            <returns>Locação iniciada</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.Finalizar(System.Int32)">
+            <summary>
+            Finaliza uma locação
+            </summary>
+            <param name="id">ID da locação</param>
+            <returns>Locação finalizada</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.Cancelar(System.Int32)">
+            <summary>
+            Cancela uma locação
+            </summary>
+            <param name="id">ID da locação</param>
+            <returns>Locação cancelada</returns>
+        </member>
+        <member name="M:MottuApi.Presentation.Controllers.LocacaoController.CalcularValorTotal(System.Int32)">
+            <summary>
+            Calcula o valor total de uma locação
+            </summary>
+            <param name="id">ID da locação</param>
+            <returns>Valor total calculado</returns>
+        </member>
     </members>
 </doc>

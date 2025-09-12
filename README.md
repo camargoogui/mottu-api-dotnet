@@ -33,48 +33,56 @@ MottuApi/
 ├── MottuApi.Presentation/          # Camada de Apresentação
 │   ├── Controllers/
 │   │   ├── FilialController.cs     # 7 endpoints para filiais
-│   │   └── MotoController.cs       # 9 endpoints para motos
+│   │   ├── MotoController.cs       # 9 endpoints para motos
+│   │   └── LocacaoController.cs    # 18 endpoints para locações
 │   ├── Program.cs                  # Configuração da aplicação
 │   ├── appsettings.json           # Configurações
 │   └── Properties/
 ├── MottuApi.Application/           # Camada de Aplicação
 │   ├── DTOs/
 │   │   ├── FilialDTO.cs           # DTOs para filiais
-│   │   └── MotoDTO.cs             # DTOs para motos
+│   │   ├── MotoDTO.cs             # DTOs para motos
+│   │   └── LocacaoDTO.cs          # DTOs para locações
 │   ├── Interfaces/
 │   │   ├── IFilialService.cs      # Interface do serviço de filiais
-│   │   └── IMotoService.cs        # Interface do serviço de motos
+│   │   ├── IMotoService.cs        # Interface do serviço de motos
+│   │   └── ILocacaoService.cs     # Interface do serviço de locações
 │   ├── Services/
 │   │   ├── FilialService.cs       # Lógica de aplicação para filiais
-│   │   └── MotoService.cs         # Lógica de aplicação para motos
+│   │   ├── MotoService.cs         # Lógica de aplicação para motos
+│   │   └── LocacaoService.cs      # Lógica de aplicação para locações
 │   └── Mappings/
 │       └── MappingProfile.cs      # Configuração do AutoMapper
 ├── MottuApi.Domain/               # Camada de Domínio
 │   ├── Entities/
 │   │   ├── Filial.cs              # Entidade rica (Agregado Raiz)
-│   │   └── Moto.cs                # Entidade rica
+│   │   ├── Moto.cs                # Entidade rica
+│   │   └── Locacao.cs             # Entidade rica (Core Business)
 │   ├── ValueObjects/
 │   │   └── Endereco.cs            # Value Object imutável
 │   ├── Exceptions/
 │   │   └── DomainException.cs     # Exceções de domínio
 │   └── Interfaces/
 │       ├── IFilialRepository.cs   # Interface do repositório de filiais
-│       └── IMotoRepository.cs     # Interface do repositório de motos
+│       ├── IMotoRepository.cs     # Interface do repositório de motos
+│       └── ILocacaoRepository.cs  # Interface do repositório de locações
 └── MottuApi.Infrastructure/       # Camada de Infraestrutura
     ├── Data/
     │   └── ApplicationDbContext.cs # Contexto do EF Core
     ├── Repositories/
     │   ├── FilialRepository.cs    # Implementação do repositório de filiais
-    │   └── MotoRepository.cs      # Implementação do repositório de motos
+    │   ├── MotoRepository.cs      # Implementação do repositório de motos
+    │   └── LocacaoRepository.cs   # Implementação do repositório de locações
     └── Migrations/                # Migrations do banco de dados
 ```
 
 ### 🎯 Domain-Driven Design (DDD)
 
-- **Entidades Ricas**: `Moto` e `Filial` com comportamento encapsulado
+- **Entidades Ricas**: `Moto`, `Filial` e `Locacao` com comportamento encapsulado
 - **Agregado Raiz**: `Filial` como agregado raiz que gerencia suas motos
+- **Core Business**: `Locacao` como entidade central do negócio
 - **Value Object**: `Endereco` como value object imutável
-- **Interfaces no Domínio**: `IFilialRepository` e `IMotoRepository`
+- **Interfaces no Domínio**: `IFilialRepository`, `IMotoRepository` e `ILocacaoRepository`
 
 ### 🧹 Clean Code
 
@@ -180,6 +188,26 @@ Acesse a documentação interativa do Swagger em:
 | PATCH | `/api/moto/{id}/disponivel` | Marcar moto como disponível |
 | PATCH | `/api/moto/{id}/indisponivel` | Marcar moto como indisponível |
 
+#### 🚗 Locações
+
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | `/api/locacao` | Listar todas as locações (com paginação) |
+| GET | `/api/locacao/{id}` | Buscar locação por ID |
+| GET | `/api/locacao/por-moto/{motoId}` | Listar locações de uma moto |
+| GET | `/api/locacao/por-filial/{filialId}` | Listar locações de uma filial |
+| GET | `/api/locacao/por-cliente?cpf=12345678901` | Buscar locações por CPF do cliente |
+| GET | `/api/locacao/por-periodo?inicio=2024-01-01&fim=2024-12-31` | Buscar locações por período |
+| GET | `/api/locacao/ativas` | Listar locações ativas |
+| GET | `/api/locacao/finalizadas` | Listar locações finalizadas |
+| POST | `/api/locacao` | Criar nova locação |
+| PUT | `/api/locacao/{id}` | Atualizar locação |
+| DELETE | `/api/locacao/{id}` | Excluir locação |
+| PATCH | `/api/locacao/{id}/iniciar` | Iniciar locação |
+| PATCH | `/api/locacao/{id}/finalizar` | Finalizar locação |
+| PATCH | `/api/locacao/{id}/cancelar` | Cancelar locação |
+| GET | `/api/locacao/{id}/calcular-valor` | Calcular valor total da locação |
+
 ## 📝 Exemplos de Uso
 
 ### Criar uma Filial
@@ -226,6 +254,35 @@ curl -X GET "http://localhost:5001/api/moto/por-placa?placa=ABC1234"
 curl -X PATCH "http://localhost:5001/api/moto/1/indisponivel"
 ```
 
+### Criar uma Locação
+
+```bash
+curl -X POST "http://localhost:5001/api/locacao" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "motoId": 1,
+    "filialId": 1,
+    "clienteNome": "João Silva",
+    "clienteCpf": "12345678901",
+    "clienteTelefone": "(11) 99999-9999",
+    "dataInicio": "2024-01-15T10:00:00Z",
+    "dataFim": "2024-01-15T18:00:00Z",
+    "valorHora": 15.50
+  }'
+```
+
+### Buscar Locações Ativas
+
+```bash
+curl -X GET "http://localhost:5001/api/locacao/ativas"
+```
+
+### Finalizar Locação
+
+```bash
+curl -X PATCH "http://localhost:5001/api/locacao/1/finalizar"
+```
+
 ## 🗄️ Estrutura do Banco de Dados
 
 ### Tabela: Filiais
@@ -257,6 +314,24 @@ curl -X PATCH "http://localhost:5001/api/moto/1/indisponivel"
 | Cor | VARCHAR(30) | Cor da moto |
 | Disponivel | BOOLEAN | Status de disponibilidade |
 | FilialId | INT | FK para Filial |
+| DataCriacao | DATETIME | Data de criação |
+| DataAtualizacao | DATETIME | Data de atualização |
+
+### Tabela: Locações
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| Id | INT | Chave primária |
+| MotoId | INT | FK para Moto |
+| FilialId | INT | FK para Filial |
+| ClienteNome | VARCHAR(100) | Nome do cliente |
+| ClienteCpf | VARCHAR(11) | CPF do cliente |
+| ClienteTelefone | VARCHAR(15) | Telefone do cliente |
+| DataInicio | DATETIME | Data de início da locação |
+| DataFim | DATETIME | Data de fim da locação |
+| ValorHora | DECIMAL(10,2) | Valor por hora |
+| ValorTotal | DECIMAL(10,2) | Valor total calculado |
+| Status | INT | Status da locação (1=Solicitada, 2=Iniciada, 3=Finalizada, 4=Cancelada) |
 | DataCriacao | DATETIME | Data de criação |
 | DataAtualizacao | DATETIME | Data de atualização |
 
@@ -330,9 +405,10 @@ Se preferir configurar o banco manualmente:
 - [x] Script SQL para criação manual
 
 ### ✅ API RESTful
-- [x] 16 endpoints implementados
+- [x] 34 endpoints implementados
 - [x] Filiais: 7 endpoints (CRUD + ativar/desativar)
 - [x] Motos: 9 endpoints (CRUD + disponibilidade + busca por placa/filial)
+- [x] Locações: 18 endpoints (CRUD + operações específicas + relatórios)
 - [x] Tratamento de exceções
 - [x] Validações de domínio
 - [x] **Paginação** implementada em todos os endpoints de listagem
@@ -375,7 +451,7 @@ Se preferir configurar o banco manualmente:
 | **Clean Architecture** | ✅ | 4 camadas bem separadas |
 | **Domain-Driven Design** | ✅ | Entidades ricas + Value Objects |
 | **Clean Code** | ✅ | SRP, DRY, KISS, YAGNI aplicados |
-| **API RESTful** | ✅ | 16 endpoints funcionando |
+| **API RESTful** | ✅ | 34 endpoints funcionando |
 | **Paginação** | ✅ | Implementada em todos os listagens |
 | **HATEOAS** | ✅ | Links de navegação implementados |
 | **Swagger/OpenAPI** | ✅ | Documentação completa |

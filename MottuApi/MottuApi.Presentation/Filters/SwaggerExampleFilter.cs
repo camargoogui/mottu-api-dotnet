@@ -60,6 +60,31 @@ namespace MottuApi.Presentation.Filters
                     ["cor"] = new OpenApiString("Azul")
                 };
             }
+            else if (context.Type == typeof(CreateLocacaoDTO))
+            {
+                schema.Example = new OpenApiObject
+                {
+                    ["motoId"] = new OpenApiInteger(1),
+                    ["filialId"] = new OpenApiInteger(1),
+                    ["clienteNome"] = new OpenApiString("João Silva"),
+                    ["clienteCpf"] = new OpenApiString("12345678901"),
+                    ["clienteTelefone"] = new OpenApiString("(11) 99999-9999"),
+                    ["dataInicio"] = new OpenApiString("2024-01-15T10:00:00Z"),
+                    ["dataFim"] = new OpenApiString("2024-01-15T18:00:00Z"),
+                    ["valorHora"] = new OpenApiDouble(15.50)
+                };
+            }
+            else if (context.Type == typeof(UpdateLocacaoDTO))
+            {
+                schema.Example = new OpenApiObject
+                {
+                    ["clienteNome"] = new OpenApiString("João Silva Santos"),
+                    ["clienteTelefone"] = new OpenApiString("(11) 88888-8888"),
+                    ["dataInicio"] = new OpenApiString("2024-01-15T10:00:00Z"),
+                    ["dataFim"] = new OpenApiString("2024-01-15T18:00:00Z"),
+                    ["valorHora"] = new OpenApiDouble(20.00)
+                };
+            }
         }
     }
 }

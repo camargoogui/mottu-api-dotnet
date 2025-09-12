@@ -98,8 +98,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Registro dos serviços
 builder.Services.AddScoped<IFilialRepository, FilialRepository>();
 builder.Services.AddScoped<IMotoRepository, MotoRepository>();
+builder.Services.AddScoped<ILocacaoRepository, LocacaoRepository>();
 builder.Services.AddScoped<IFilialService, FilialService>();
 builder.Services.AddScoped<IMotoService, MotoService>();
+builder.Services.AddScoped<ILocacaoService, LocacaoService>();
 
 var app = builder.Build();
 
