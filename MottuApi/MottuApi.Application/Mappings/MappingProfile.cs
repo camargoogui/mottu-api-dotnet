@@ -53,6 +53,13 @@ namespace MottuApi.Application.Mappings
                 .ForMember(dest => dest.FilialId, opt => opt.MapFrom(src => src.FilialId));
 
             CreateMap<UpdateMotoDTO, Moto>();
+
+            // Usuario mappings
+            CreateMap<Usuario, UsuarioDTO>()
+                .ForMember(dest => dest.FilialNome, opt => opt.MapFrom(src => src.Filial != null ? src.Filial.Nome : null));
+
+            CreateMap<CreateUsuarioDTO, Usuario>();
+            CreateMap<UpdateUsuarioDTO, Usuario>();
         }
     }
 } 
