@@ -115,6 +115,25 @@ namespace MottuApi.Presentation.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza uma moto existente
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de requisição:
+        ///
+        ///     PUT /api/moto/{id}
+        ///     {
+        ///         "modelo": "Honda CG 160 Titan",
+        ///         "ano": 2024,
+        ///         "cor": "Azul",
+        ///         "status": 0
+        ///     }
+        ///     
+        /// Status possíveis:
+        /// - 0 = Disponível
+        /// - 1 = Ocupada
+        /// - 2 = Manutenção
+        /// </remarks>
         [HttpPut("{id}")]
         public async Task<ActionResult<MotoDTO>> Update(int id, [FromBody] UpdateMotoDTO updateMotoDTO)
         {

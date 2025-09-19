@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using MottuApi.Domain.Entities;
+using MottuApi.Domain.Entities; // Ajuste o namespace conforme seu projeto
 
 namespace MottuApi.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
             : base(options)
         {
         }
@@ -18,53 +18,100 @@ namespace MottuApi.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Filial>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Nome).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.Telefone).IsRequired().HasMaxLength(15);
-                entity.OwnsOne(e => e.Endereco, endereco =>
-                {
-                    endereco.Property(e => e.Logradouro).IsRequired().HasMaxLength(100);
-                    endereco.Property(e => e.Numero).IsRequired().HasMaxLength(10);
-                    endereco.Property(e => e.Complemento).HasMaxLength(50);
-                    endereco.Property(e => e.Bairro).IsRequired().HasMaxLength(50);
-                    endereco.Property(e => e.Cidade).IsRequired().HasMaxLength(50);
-                    endereco.Property(e => e.Estado).IsRequired().HasMaxLength(2);
-                    endereco.Property(e => e.CEP).IsRequired().HasMaxLength(8);
-                });
-            });
-
+            // ✅ CONFIGURAÇÃO ESSENCIAL - Cascade Delete
             modelBuilder.Entity<Moto>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.Placa).IsRequired().HasMaxLength(7);
-                entity.Property(e => e.Modelo).IsRequired().HasMaxLength(50);
-                entity.Property(e => e.Cor).IsRequired().HasMaxLength(30);
-                entity.HasOne(e => e.Filial)
-                    .WithMany(f => f.Motos)
-                    .HasForeignKey(e => e.FilialId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                // Configurar relacionamento Moto -> Filial
+                entity.HasOne(m => m.Filial)
+                      .WithMany(f => f.Motos)
+                      .HasForeignKey(m => m.FilialId)
+                      .OnDelete(DeleteBehavior.Cascade) // ← ESTA LINHA RESOLVE O PROBLEMA!
+                      .IsRequired();
+
+                // Índice único para placa
+                entity.HasIndex(m => m.Placa)
+                      .IsUnique();
+
+                // Configurações de propriedades
+                entity.Property(m => m.Placa)
+                      .HasMaxLength(7)
+                      .IsRequired();
+
+                entity.Property(m => m.Modelo)
+                      .HasMaxLength(50)
+                      .IsRequired();
+
+                entity.Property(m => m.Cor)
+                      .HasMaxLength(30)
+                      .IsRequired();
+            });
+
+            modelBuilder.Entity<Filial>(entity =>
+            {
+                entity.Property(f => f.Nome)
+                      .HasMaxLength(100)
+                      .IsRequired();
+
+                // Configurar Endereco como um Owned Type
+                entity.OwnsOne(f => f.Endereco, endereco =>
+                {
+                    endereco.Property(e => e.Logradouro)
+                           .HasMaxLength(100)
+                           .IsRequired();
+                    endereco.Property(e => e.Numero)
+                           .HasMaxLength(10)
+                           .IsRequired();
+                    endereco.Property(e => e.Complemento)
+                           .HasMaxLength(50);
+                    endereco.Property(e => e.Bairro)
+                           .HasMaxLength(50)
+                           .IsRequired();
+                    endereco.Property(e => e.Cidade)
+                           .HasMaxLength(50)
+                           .IsRequired();
+                    endereco.Property(e => e.Estado)
+                           .HasMaxLength(2)
+                           .IsRequired();
+                    endereco.Property(e => e.CEP)
+                           .HasMaxLength(8)
+                           .IsRequired();
+                });
             });
 
             modelBuilder.Entity<Locacao>(entity =>
             {
-                entity.HasKey(e => e.Id);
-                entity.Property(e => e.ClienteNome).IsRequired().HasMaxLength(100);
-                entity.Property(e => e.ClienteCpf).IsRequired().HasMaxLength(11);
-                entity.Property(e => e.ClienteTelefone).IsRequired().HasMaxLength(15);
-                entity.Property(e => e.ValorHora).HasColumnType("decimal(10,2)");
-                entity.Property(e => e.ValorTotal).HasColumnType("decimal(10,2)");
-                entity.Property(e => e.Status).HasConversion<int>();
-                entity.HasOne(e => e.Moto)
-                    .WithMany()
-                    .HasForeignKey(e => e.MotoId)
-                    .OnDelete(DeleteBehavior.Restrict);
-                entity.HasOne(e => e.Filial)
-                    .WithMany()
-                    .HasForeignKey(e => e.FilialId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                // Configurar relacionamentos
+                entity.HasOne(l => l.Moto)
+                      .WithMany()
+                      .HasForeignKey(l => l.MotoId)
+                      .OnDelete(DeleteBehavior.Restrict)
+                      .IsRequired();
+
+                // Configurações de propriedades
+                entity.Property(l => l.DataInicio)
+                      .IsRequired();
+
+                entity.Property(l => l.ClienteNome)
+                      .HasMaxLength(100)
+                      .IsRequired();
+
+                entity.Property(l => l.ClienteCpf)
+                      .HasMaxLength(11)
+                      .IsRequired();
+
+                entity.Property(l => l.ClienteTelefone)
+                      .HasMaxLength(15)
+                      .IsRequired();
+
+                // Configurar campos decimais com precisão adequada
+                entity.Property(l => l.ValorHora)
+                      .HasPrecision(10, 2)
+                      .IsRequired();
+
+                entity.Property(l => l.ValorTotal)
+                      .HasPrecision(10, 2)
+                      .IsRequired();
             });
         }
     }
-} 
+}

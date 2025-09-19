@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MottuApi.Infrastructure.Data;
 using Oracle.EntityFrameworkCore.Metadata;
@@ -11,9 +12,11 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace MottuApi.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250919122909_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,6 +140,9 @@ namespace MottuApi.Infrastructure.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("TIMESTAMP(7)");
 
+                    b.Property<bool>("Disponivel")
+                        .HasColumnType("NUMBER(1)");
+
                     b.Property<int>("FilialId")
                         .HasColumnType("NUMBER(10)");
 
@@ -149,9 +155,6 @@ namespace MottuApi.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(7)
                         .HasColumnType("NVARCHAR2(7)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("NUMBER(10)");
 
                     b.HasKey("Id");
 

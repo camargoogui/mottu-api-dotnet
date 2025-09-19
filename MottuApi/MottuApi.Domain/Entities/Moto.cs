@@ -1,6 +1,7 @@
 using System;
 using MottuApi.Domain.ValueObjects;
 using MottuApi.Domain.Exceptions;
+using MottuApi.Domain.Enums;
 
 namespace MottuApi.Domain.Entities
 {
@@ -11,7 +12,7 @@ namespace MottuApi.Domain.Entities
         public string Modelo { get; private set; }
         public int Ano { get; private set; }
         public string Cor { get; private set; }
-        public bool Disponivel { get; private set; }
+        public MotoStatus Status { get; private set; }
         public DateTime DataCriacao { get; private set; }
         public DateTime? DataAtualizacao { get; private set; }
         public int FilialId { get; private set; }
@@ -33,37 +34,39 @@ namespace MottuApi.Domain.Entities
             Cor = cor;
             Filial = filial;
             FilialId = filial.Id;
-            Disponivel = true;
+            Status = MotoStatus.Disponivel;
             DataCriacao = DateTime.UtcNow;
         }
 
-        public void Atualizar(string modelo, int ano, string cor)
+        public void Atualizar(string modelo, int ano, string cor, MotoStatus status)
         {
             ValidarModelo(modelo);
             ValidarAno(ano);
             ValidarCor(cor);
+            ValidarStatus(status);
 
             Modelo = modelo;
             Ano = ano;
             Cor = cor;
+            Status = status;
             DataAtualizacao = DateTime.UtcNow;
         }
 
         public void MarcarComoIndisponivel()
         {
-            if (!Disponivel)
+            if (Status != MotoStatus.Disponivel)
                 throw new DomainException("Moto já está indisponível.");
 
-            Disponivel = false;
+            Status = MotoStatus.Ocupada;
             DataAtualizacao = DateTime.UtcNow;
         }
 
         public void MarcarComoDisponivel()
         {
-            if (Disponivel)
+            if (Status == MotoStatus.Disponivel)
                 throw new DomainException("Moto já está disponível.");
 
-            Disponivel = true;
+            Status = MotoStatus.Disponivel;
             DataAtualizacao = DateTime.UtcNow;
         }
 
@@ -91,6 +94,12 @@ namespace MottuApi.Domain.Entities
             var anoAtual = DateTime.Now.Year;
             if (ano < 1900 || ano > anoAtual + 1)
                 throw new DomainException($"Ano deve estar entre 1900 e {anoAtual + 1}.");
+        }
+
+        private void ValidarStatus(MotoStatus status)
+        {
+            if (!Enum.IsDefined(typeof(MotoStatus), status))
+                throw new DomainException("Status inválido. Use: Disponivel, Ocupada ou Manutencao.");
         }
 
         private void ValidarCor(string cor)

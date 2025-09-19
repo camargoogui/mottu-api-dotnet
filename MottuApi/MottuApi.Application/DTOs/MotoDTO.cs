@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using MottuApi.Domain.Enums;
 
 namespace MottuApi.Application.DTOs
 {
@@ -10,7 +11,7 @@ namespace MottuApi.Application.DTOs
         public string Modelo { get; set; } = string.Empty;
         public int Ano { get; set; }
         public string Cor { get; set; } = string.Empty;
-        public bool Disponivel { get; set; }
+        public MotoStatus Status { get; set; }
         public DateTime DataCriacao { get; set; }
         public DateTime? DataAtualizacao { get; set; }
         public int FilialId { get; set; }
@@ -54,5 +55,8 @@ namespace MottuApi.Application.DTOs
         [Required(ErrorMessage = "Cor é obrigatória")]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Cor deve ter entre 3 e 30 caracteres")]
         public string Cor { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Status é obrigatório")]
+        public MotoStatus Status { get; set; }
     }
 } 

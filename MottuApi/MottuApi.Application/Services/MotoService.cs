@@ -116,7 +116,8 @@ namespace MottuApi.Application.Services
             moto.Atualizar(
                 updateMotoDTO.Modelo,
                 updateMotoDTO.Ano,
-                updateMotoDTO.Cor
+                updateMotoDTO.Cor,
+                updateMotoDTO.Status
             );
 
             await _motoRepository.UpdateAsync(moto);
