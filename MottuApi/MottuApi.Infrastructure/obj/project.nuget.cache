@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gdcUKuMAr5o=",
+  "dgSpecHash": "cz8Rk6dbqDM=",
   "success": true,
-  "projectFilePath": "/Users/camargoogui/DOTNET---Challenge-1/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj",
+  "projectFilePath": "/Users/camargoogui/DOTNET---Challenge-3/MottuApi/MottuApi.Infrastructure/MottuApi.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/Users/camargoogui/.nuget/packages/microsoft.entityframeworkcore/8.0.4/microsoft.entityframeworkcore.8.0.4.nupkg.sha512",
     "/Users/camargoogui/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.4/microsoft.entityframeworkcore.abstractions.8.0.4.nupkg.sha512",

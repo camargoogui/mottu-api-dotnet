@@ -125,5 +125,26 @@
             <param name="id">ID da locação</param>
             <returns>Valor total calculado</returns>
         </member>
+        <member name="M:MottuApi.Presentation.Controllers.MotoController.Update(System.Int32,MottuApi.Application.DTOs.UpdateMotoDTO)">
+             <summary>
+             Atualiza uma moto existente
+             </summary>
+             <remarks>
+             Exemplo de requisição:
+            
+                 PUT /api/moto/{id}
+                 {
+                     "modelo": "Honda CG 160 Titan",
+                     "ano": 2024,
+                     "cor": "Azul",
+                     "status": 0
+                 }
+                 
+             Status possíveis:
+             - 0 = Disponível
+             - 1 = Ocupada
+             - 2 = Manutenção
+             </remarks>
+        </member>
     </members>
 </doc>
