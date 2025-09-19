@@ -81,7 +81,7 @@ API RESTful desenvolvida em .NET 8 seguindo os princípios de **Clean Architectu
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     if (File.Exists(xmlPath))
     {
-        c.IncludeXmlComments(xmlPath);
+        c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
     }
 
     // Configurar exemplos de schemas
