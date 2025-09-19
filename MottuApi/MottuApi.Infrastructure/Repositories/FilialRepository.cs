@@ -16,7 +16,7 @@ namespace MottuApi.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Filial> GetByIdAsync(int id)
+        public async Task<Filial?> GetByIdAsync(int id)
         {
             return await _context.Filiais
                 .Include(f => f.Motos)

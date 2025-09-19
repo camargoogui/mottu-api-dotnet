@@ -16,14 +16,14 @@ namespace MottuApi.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Moto> GetByIdAsync(int id)
+        public async Task<Moto?> GetByIdAsync(int id)
         {
             return await _context.Motos
                 .Include(m => m.Filial)
                 .FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public async Task<Moto> GetByPlacaAsync(string placa)
+        public async Task<Moto?> GetByPlacaAsync(string placa)
         {
             return await _context.Motos
                 .Include(m => m.Filial)

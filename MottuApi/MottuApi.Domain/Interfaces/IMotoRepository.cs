@@ -6,8 +6,8 @@ namespace MottuApi.Domain.Interfaces
 {
     public interface IMotoRepository
     {
-        Task<Moto> GetByIdAsync(int id);
-        Task<Moto> GetByPlacaAsync(string placa);
+        Task<Moto?> GetByIdAsync(int id);
+        Task<Moto?> GetByPlacaAsync(string placa);
         Task<IEnumerable<Moto>> GetAllAsync();
         Task<IEnumerable<Moto>> GetPagedAsync(int page, int pageSize);
         Task<int> GetCountAsync();

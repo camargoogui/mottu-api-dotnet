@@ -6,7 +6,7 @@ namespace MottuApi.Domain.Interfaces
 {
     public interface IFilialRepository
     {
-        Task<Filial> GetByIdAsync(int id);
+        Task<Filial?> GetByIdAsync(int id);
         Task<IEnumerable<Filial>> GetAllAsync();
         Task<IEnumerable<Filial>> GetPagedAsync(int page, int pageSize);
         Task<int> GetCountAsync();
