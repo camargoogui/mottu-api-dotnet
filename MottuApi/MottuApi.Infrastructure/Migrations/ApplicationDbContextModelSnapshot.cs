@@ -102,7 +102,6 @@ namespace MottuApi.Infrastructure.Migrations
                         .HasColumnType("DECIMAL(10,2)");
 
                     b.Property<decimal?>("ValorTotal")
-                        .IsRequired()
                         .HasPrecision(10, 2)
                         .HasColumnType("DECIMAL(10,2)");
 
