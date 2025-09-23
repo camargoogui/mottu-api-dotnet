@@ -1,9 +1,14 @@
-   bin/
-   obj/
-   *.user
-   *.vs
-   *.suo
-   *.pdb
-   *.dll
-   *.runtimeconfig.json
-   *.deps.json
+bin/
+obj/
+*.user
+*.vs
+*.suo
+*.pdb
+*.dll
+*.runtimeconfig.json
+*.deps.json
+
+# Arquivos de configuração sensíveis
+appsettings.json
+appsettings.*.json
+!appsettings.example.json
