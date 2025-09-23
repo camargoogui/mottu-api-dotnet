@@ -117,7 +117,14 @@ cd DOTNET---Challenge
 
 ### 2. Configure a string de conexão
 
-Edite o arquivo `MottuApi/MottuApi.Presentation/appsettings.json` com suas credenciais:
+**⚠️ IMPORTANTE**: Por segurança, o arquivo `appsettings.json` não está incluído no repositório.
+
+1. **Copie o arquivo de exemplo**:
+```bash
+cp MottuApi/MottuApi.Presentation/appsettings.example.json MottuApi/MottuApi.Presentation/appsettings.json
+```
+
+2. **Edite o arquivo** `MottuApi/MottuApi.Presentation/appsettings.json` com suas credenciais:
 
 ```json
 {
