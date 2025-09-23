@@ -8,7 +8,7 @@ obj/
 *.runtimeconfig.json
 *.deps.json
 
-# Arquivos de configuração sensíveis
-appsettings.json
-appsettings.*.json
-!appsettings.example.json
+# Arquivos de configuração sensíveis (apenas para desenvolvimento local)
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json

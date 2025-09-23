@@ -117,14 +117,9 @@ cd DOTNET---Challenge
 
 ### 2. Configure a string de conexão
 
-**⚠️ IMPORTANTE**: Por segurança, o arquivo `appsettings.json` não está incluído no repositório.
+**⚠️ IMPORTANTE**: O arquivo `appsettings.json` está incluído no repositório com credenciais genéricas.
 
-1. **Copie o arquivo de exemplo**:
-```bash
-cp MottuApi/MottuApi.Presentation/appsettings.example.json MottuApi/MottuApi.Presentation/appsettings.json
-```
-
-2. **Edite o arquivo** `MottuApi/MottuApi.Presentation/appsettings.json` com suas credenciais:
+**Edite o arquivo** `MottuApi/MottuApi.Presentation/appsettings.json` substituindo as credenciais:
 
 ```json
 {
@@ -133,6 +128,10 @@ cp MottuApi/MottuApi.Presentation/appsettings.example.json MottuApi/MottuApi.Pre
   }
 }
 ```
+
+**Substitua:**
+- `SEU_USUARIO` → Seu usuário do Oracle
+- `SUA_SENHA` → Sua senha do Oracle
 
 **Configuração recomendada para Oracle da FIAP:**
 - **Host**: `oracle.fiap.com.br`
