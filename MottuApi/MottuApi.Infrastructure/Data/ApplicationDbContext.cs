@@ -109,8 +109,7 @@ namespace MottuApi.Infrastructure.Data
                       .IsRequired();
 
                 entity.Property(l => l.ValorTotal)
-                      .HasPrecision(10, 2)
-                      .IsRequired();
+                      .HasPrecision(10, 2);
             });
         }
     }

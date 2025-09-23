@@ -4,7 +4,7 @@ namespace MottuApi.Application.Interfaces
 {
     public interface ILocacaoService
     {
-        Task<PagedResult<LocacaoDTO>> GetAllAsync(int page = 1, int pageSize = 10);
+        Task<PagedResultDTO<LocacaoDTO>> GetAllAsync(int page = 1, int pageSize = 10);
         Task<LocacaoDTO?> GetByIdAsync(int id);
         Task<IEnumerable<LocacaoDTO>> GetByMotoIdAsync(int motoId);
         Task<IEnumerable<LocacaoDTO>> GetByFilialIdAsync(int filialId);
@@ -22,14 +22,4 @@ namespace MottuApi.Application.Interfaces
         Task<bool> MotoEstaDisponivelAsync(int motoId, DateTime dataInicio, DateTime? dataFim, int? excludeLocacaoId = null);
     }
 
-    public class PagedResult<T>
-    {
-        public IEnumerable<T> Data { get; set; } = new List<T>();
-        public int TotalCount { get; set; }
-        public int Page { get; set; }
-        public int PageSize { get; set; }
-        public int TotalPages => (int)Math.Ceiling((double)TotalCount / PageSize);
-        public bool HasNextPage => Page < TotalPages;
-        public bool HasPreviousPage => Page > 1;
-    }
 }

@@ -22,7 +22,7 @@ namespace MottuApi.Presentation.Controllers
         /// <param name="pageSize">Tamanho da página (padrão: 10)</param>
         /// <returns>Lista paginada de locações</returns>
         [HttpGet]
-        public async Task<ActionResult<PagedResult<LocacaoDTO>>> GetAll(int page = 1, int pageSize = 10)
+        public async Task<ActionResult<PagedResultDTO<LocacaoDTO>>> GetAll(int page = 1, int pageSize = 10)
         {
             var locacoes = await _locacaoService.GetAllAsync(page, pageSize);
             return Ok(locacoes);

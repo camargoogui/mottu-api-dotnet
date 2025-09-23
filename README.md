@@ -34,7 +34,7 @@ MottuApi/
 │   ├── Controllers/
 │   │   ├── FilialController.cs     # 7 endpoints para filiais
 │   │   ├── MotoController.cs       # 9 endpoints para motos
-│   │   └── LocacaoController.cs    # 18 endpoints para locações
+│   │   └── LocacaoController.cs    # 15 endpoints para locações
 │   ├── Program.cs                  # Configuração da aplicação
 │   ├── appsettings.json           # Configurações
 │   └── Properties/
@@ -145,7 +145,7 @@ dotnet ef database update
 
 ```bash
 cd MottuApi/MottuApi.Presentation
-dotnet run --urls "http://localhost:5001"
+dotnet run --urls "http://0.0.0.0:5001"
 ```
 
 A API estará disponível em:
@@ -405,10 +405,10 @@ Se preferir configurar o banco manualmente:
 - [x] Script SQL para criação manual
 
 ### ✅ API RESTful
-- [x] 34 endpoints implementados
+- [x] 31 endpoints implementados
 - [x] Filiais: 7 endpoints (CRUD + ativar/desativar)
 - [x] Motos: 9 endpoints (CRUD + disponibilidade + busca por placa/filial)
-- [x] Locações: 18 endpoints (CRUD + operações específicas + relatórios)
+- [x] Locações: 15 endpoints (CRUD + operações específicas + relatórios)
 - [x] Tratamento de exceções
 - [x] Validações de domínio
 - [x] **Paginação** implementada em todos os endpoints de listagem
@@ -451,7 +451,7 @@ Se preferir configurar o banco manualmente:
 | **Clean Architecture** | ✅ | 4 camadas bem separadas |
 | **Domain-Driven Design** | ✅ | Entidades ricas + Value Objects |
 | **Clean Code** | ✅ | SRP, DRY, KISS, YAGNI aplicados |
-| **API RESTful** | ✅ | 34 endpoints funcionando |
+| **API RESTful** | ✅ | 31 endpoints funcionando |
 | **Paginação** | ✅ | Implementada em todos os listagens |
 | **HATEOAS** | ✅ | Links de navegação implementados |
 | **Swagger/OpenAPI** | ✅ | Documentação completa |

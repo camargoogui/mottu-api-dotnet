@@ -17,7 +17,7 @@ namespace MottuApi.Application.Services
             _mapper = mapper;
         }
 
-        public async Task<PagedResult<LocacaoDTO>> GetAllAsync(int page = 1, int pageSize = 10)
+        public async Task<PagedResultDTO<LocacaoDTO>> GetAllAsync(int page = 1, int pageSize = 10)
         {
             var locacoes = await _locacaoRepository.GetAllAsync(page, pageSize);
             var totalCount = await _locacaoRepository.GetTotalCountAsync();
@@ -30,12 +30,19 @@ namespace MottuApi.Application.Services
                 locacao.Links = GenerateLinks(locacao.Id);
             }
 
-            return new PagedResult<LocacaoDTO>
+            return new PagedResultDTO<LocacaoDTO>
             {
-                Data = locacaoDTOs,
+                Data = locacaoDTOs.ToList(),
                 TotalCount = totalCount,
                 Page = page,
-                PageSize = pageSize
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling((double)totalCount / pageSize),
+                HasNext = page < (int)Math.Ceiling((double)totalCount / pageSize),
+                HasPrevious = page > 1,
+                Links = new List<LinkDTO>
+                {
+                    new LinkDTO { Href = $"/api/locacao?page={page}&pageSize={pageSize}", Rel = "self", Method = "GET" }
+                }
             };
         }
 
