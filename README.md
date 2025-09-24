@@ -6,8 +6,9 @@ A **Mottu API** é uma aplicação desenvolvida em .NET 8 que implementa os prin
 
 ## 👥 Integrantes
 
-- **Guilherme Camargo** - RM555166 - 2TDSPM
-- **Icaro Albuquerque** - RM555131 - 2TDSPM
+- **RM556270** - Bianca Vitoria - 2TDSPZ
+- **RM555166** - Guilherme Camargo - 2TDSPM  
+- **RM555131** - Icaro Americo - 2TDSPM
 
 ## 🔗 Repositório GitHub
 
