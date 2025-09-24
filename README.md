@@ -12,7 +12,7 @@ A **Mottu API** é uma aplicação desenvolvida em .NET 8 que implementa os prin
 
 ## 🔗 Repositório GitHub
 
-**Link do Projeto**: [https://github.com/camargoogui/DOTNET---Challenge.git](https://github.com/camargoogui/DOTNET---Challenge.git)
+**Link do Projeto**: [https://github.com/camargoogui/mottu-api-dotnet.git](https://github.com/camargoogui/mottu-api-dotnet.git)
 
 ## 🏗️ Arquitetura
 
@@ -112,8 +112,8 @@ MottuApi/
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/camargoogui/DOTNET---Challenge.git
-cd DOTNET---Challenge
+git clone https://github.com/camargoogui/mottu-api-dotnet.git
+cd mottu-api-dotnet
 ```
 
 ### 2. Configure a string de conexão
@@ -471,8 +471,8 @@ Se preferir configurar o banco manualmente:
 
 ```bash
 # 1. Clone e navegue
-git clone https://github.com/camargoogui/DOTNET---Challenge.git
-cd DOTNET---Challenge
+git clone https://github.com/camargoogui/mottu-api-dotnet.git
+cd mottu-api-dotnet
 
 # 2. Execute a aplicação
 cd MottuApi/MottuApi.Presentation
@@ -502,7 +502,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 - **Email**: contato@mottu.com.br
 - **LinkedIn**: [Mottu](https://linkedin.com/company/mottu)
 - **Website**: [www.mottu.com.br](https://www.mottu.com.br)
-- **GitHub**: [https://github.com/camargoogui/DOTNET---Challenge.git](https://github.com/camargoogui/DOTNET---Challenge.git)
+- **GitHub**: [https://github.com/camargoogui/mottu-api-dotnet.git](https://github.com/camargoogui/mottu-api-dotnet.git)
 
 ---
 
