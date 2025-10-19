@@ -12,7 +12,9 @@ namespace MottuApi.Presentation.Controllers
     /// Controller para gerenciamento de filiais da Mottu
     /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class FilialController : ControllerBase
     {
         private readonly IFilialService _filialService;

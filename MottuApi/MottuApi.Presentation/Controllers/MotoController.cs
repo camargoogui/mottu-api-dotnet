@@ -9,7 +9,9 @@ using MottuApi.Domain.Exceptions;
 namespace MottuApi.Presentation.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class MotoController : ControllerBase
     {
         private readonly IMotoService _motoService;
