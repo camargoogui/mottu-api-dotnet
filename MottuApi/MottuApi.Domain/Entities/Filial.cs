@@ -60,6 +60,12 @@ namespace MottuApi.Domain.Entities
             DataAtualizacao = DateTime.UtcNow;
         }
 
+        // Método público para definir ID (usado pelo repositório)
+        public void DefinirId(int id)
+        {
+            Id = id;
+        }
+
         private void ValidarNome(string nome)
         {
             if (string.IsNullOrWhiteSpace(nome))

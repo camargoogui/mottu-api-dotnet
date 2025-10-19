@@ -81,6 +81,12 @@ namespace MottuApi.Domain.Entities
                 ValorTotal = horas * ValorHora;
             }
         }
+
+        // Método público para definir ID (usado pelo repositório)
+        public void DefinirId(int id)
+        {
+            Id = id;
+        }
         
         public bool EstaAtiva()
         {
