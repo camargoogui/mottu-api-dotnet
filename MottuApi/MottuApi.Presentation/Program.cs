@@ -68,6 +68,8 @@ API RESTful desenvolvida em .NET 8 seguindo os princípios de **Clean Architectu
 - **HATEOAS**: Links de navegação para melhor descoberta da API
 - **Health Check**: Monitoramento da aplicação e banco de dados
 - **Versionamento**: Suporte a múltiplas versões da API
+- **Segurança**: Autenticação por API Key (header X-API-KEY)
+- **ML.NET**: Endpoint de previsão de valor usando Machine Learning
 
 ### 🏗️ Arquitetura
 - **Clean Architecture** com 4 camadas bem definidas
@@ -79,9 +81,9 @@ API RESTful desenvolvida em .NET 8 seguindo os princípios de **Clean Architectu
 ### 📊 Endpoints Disponíveis
 - **Filiais**: 7 endpoints (CRUD + ativar/desativar)
 - **Motos**: 9 endpoints (CRUD + disponibilidade + busca)
-- **Locações**: 15 endpoints (CRUD + operações específicas)
-- **Health Check**: 1 endpoint de monitoramento
-- **Total**: 32 endpoints implementados
+- **Locações**: 16 endpoints (CRUD + operações específicas + ML.NET)
+- **Health Check**: 3 endpoints de monitoramento
+- **Total**: 35 endpoints implementados
 
 ### 🔧 Tecnologias
 - .NET 8
@@ -89,6 +91,7 @@ API RESTful desenvolvida em .NET 8 seguindo os princípios de **Clean Architectu
 - AutoMapper 12.0.1
 - Swagger/OpenAPI 6.5.0
 - Health Checks
+- ML.NET 3.0.1 (Machine Learning)
         ",
         Contact = new Microsoft.OpenApi.Models.OpenApiContact
         {

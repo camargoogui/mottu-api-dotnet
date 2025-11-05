@@ -217,6 +217,7 @@ Acesse a documentação interativa do Swagger em:
 | PATCH | `/api/v1/locacao/{id}/finalizar` | Finalizar locação |
 | PATCH | `/api/v1/locacao/{id}/cancelar` | Cancelar locação |
 | GET | `/api/v1/locacao/{id}/calcular-valor` | Calcular valor total da locação |
+| GET | `/api/v1/locacao/prever-valor?horas={horas}&anoMoto={ano}&valorHora={valor}` | Prever valor total usando ML.NET |
 
 #### 🏥 Health Check
 
@@ -469,10 +470,11 @@ O projeto está configurado para usar MongoDB local ou Atlas:
 - [x] Health Check para MongoDB
 
 ### ✅ API RESTful
-- [x] 31 endpoints implementados
+- [x] 35 endpoints implementados
 - [x] Filiais: 7 endpoints (CRUD + ativar/desativar)
 - [x] Motos: 9 endpoints (CRUD + disponibilidade + busca por placa/filial)
-- [x] Locações: 15 endpoints (CRUD + operações específicas + relatórios)
+- [x] Locações: 16 endpoints (CRUD + operações específicas + relatórios + ML.NET)
+- [x] Health Check: 3 endpoints de monitoramento
 - [x] Tratamento de exceções
 - [x] Validações de domínio
 - [x] **Paginação** implementada em todos os endpoints de listagem
@@ -493,9 +495,24 @@ O projeto está configurado para usar MongoDB local ou Atlas:
 - [x] Health checks específicos (`/health/ready`, `/health/live`)
 - [x] Monitoramento da aplicação e banco de dados
 
+### ✅ Segurança
+- [x] Autenticação por API Key implementada (header X-API-KEY)
+- [x] Middleware de segurança configurado
+- [x] Swagger configurado com documentação de segurança
+- [x] Exceção de rotas públicas (Swagger e Health Check)
+
+### ✅ ML.NET
+- [x] Serviço de predição implementado (LocacaoPredictionService)
+- [x] Endpoint de previsão de valor de locação
+- [x] Modelo de regressão treinado com dados sintéticos
+- [x] Fallback para garantir previsibilidade
+
 ### ✅ Testes
 - [x] Projeto de testes xUnit
+- [x] Testes unitários para regras de domínio
 - [x] Testes de integração para todos os endpoints
+- [x] Testes específicos para segurança (API Key)
+- [x] Testes específicos para endpoint ML.NET
 - [x] Cobertura de cenários de sucesso e erro
 - [x] Validação de status codes e respostas
 
@@ -522,7 +539,9 @@ O projeto está configurado para usar MongoDB local ou Atlas:
 | **Clean Architecture** | ✅ | 4 camadas bem separadas |
 | **Domain-Driven Design** | ✅ | Entidades ricas + Value Objects |
 | **Clean Code** | ✅ | SRP, DRY, KISS, YAGNI aplicados |
-| **API RESTful** | ✅ | 31 endpoints funcionando |
+| **API RESTful** | ✅ | 35 endpoints funcionando |
+| **Segurança** | ✅ | API Key authentication implementada |
+| **ML.NET** | ✅ | Endpoint de previsão com Machine Learning |
 | **Paginação** | ✅ | Implementada em todos os listagens |
 | **HATEOAS** | ✅ | Links de navegação implementados |
 | **Swagger/OpenAPI** | ✅ | Documentação completa + Versionamento |
