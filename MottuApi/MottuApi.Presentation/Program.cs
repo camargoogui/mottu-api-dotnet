@@ -145,6 +145,26 @@ Versão 2.0 da API com melhorias e novas funcionalidades.
         c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
     }
 
+    // Segurança via API Key no Swagger
+    var apiKeyScheme = new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "X-API-KEY",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "Chave de API para acesso aos endpoints",
+        Reference = new Microsoft.OpenApi.Models.OpenApiReference
+        {
+            Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+            Id = "ApiKeyScheme"
+        }
+    };
+
+    c.AddSecurityDefinition("ApiKeyScheme", apiKeyScheme);
+    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        { apiKeyScheme, new List<string>() }
+    });
+
     // Configurar exemplos de schemas
     c.SchemaFilter<SwaggerExampleFilter>();
 });
@@ -175,6 +195,7 @@ builder.Services.AddScoped<ILocacaoRepository, LocacaoMongoRepository>();
 builder.Services.AddScoped<IFilialService, FilialService>();
 builder.Services.AddScoped<IMotoService, MotoService>();
 builder.Services.AddScoped<ILocacaoService, LocacaoService>();
+builder.Services.AddSingleton<ILocacaoPredictionService, LocacaoPredictionService>();
 
 var app = builder.Build();
 
@@ -193,6 +214,36 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// API Key Security Middleware (bypassa Swagger e Health)
+app.Use(async (context, next) =>
+{
+    var path = context.Request.Path.Value ?? string.Empty;
+    var isSwagger = path.StartsWith("/swagger") || path == "/";
+    var isHealth = path.StartsWith("/health");
+
+    if (isSwagger || isHealth)
+    {
+        await next();
+        return;
+    }
+
+    var configuredKey = app.Configuration["ApiKey"];
+    if (string.IsNullOrWhiteSpace(configuredKey))
+    {
+        await next();
+        return;
+    }
+
+    if (!context.Request.Headers.TryGetValue("X-API-KEY", out var providedKey) || providedKey != configuredKey)
+    {
+        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        await context.Response.WriteAsJsonAsync(new { error = "API Key inválida ou ausente." });
+        return;
+    }
+
+    await next();
+});
 
 app.UseAuthorization();
 

@@ -397,6 +397,31 @@ cd MottuApi.Tests
 dotnet test
 ```
 
+### Autenticação (API Key)
+
+- Todos os endpoints (exceto Swagger e Health) exigem o header `X-API-KEY`.
+- Valor padrão em desenvolvimento: `local-dev-key` (configurável em `MottuApi/MottuApi.Presentation/appsettings.json`).
+
+Exemplo cURL com API Key:
+
+```bash
+curl -H "X-API-KEY: local-dev-key" http://localhost:5001/api/v1/filial
+```
+
+### Endpoint ML.NET
+
+- Previsão de valor total usando ML.NET (regressão):
+
+```bash
+curl -H "X-API-KEY: local-dev-key" \
+  "http://localhost:5001/api/v1/locacao/prever-valor?horas=4&anoMoto=2023&valorHora=15"
+```
+Resposta esperada:
+
+```json
+{ "valorPrevisto": 59.9 }
+```
+
 ## 📄 Arquivos de Suporte
 
 ### Documentação

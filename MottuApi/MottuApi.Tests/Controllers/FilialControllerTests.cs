@@ -17,13 +17,14 @@ namespace MottuApi.Tests.Controllers
         {
             _factory = factory;
             _client = _factory.CreateClient();
+            _client.DefaultRequestHeaders.Add("X-API-KEY", "local-dev-key");
         }
 
         [Fact]
         public async Task GetAll_ShouldReturnOk()
         {
             // Act
-            var response = await _client.GetAsync("/api/filial");
+            var response = await _client.GetAsync("/api/v1/filial");
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.OK);
@@ -33,7 +34,7 @@ namespace MottuApi.Tests.Controllers
         public async Task GetAll_WithPagination_ShouldReturnOk()
         {
             // Act
-            var response = await _client.GetAsync("/api/filial?page=1&pageSize=10");
+            var response = await _client.GetAsync("/api/v1/filial?page=1&pageSize=10");
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.OK);
@@ -43,7 +44,7 @@ namespace MottuApi.Tests.Controllers
         public async Task GetById_WithValidId_ShouldReturnOk()
         {
             // Act
-            var response = await _client.GetAsync("/api/filial/1");
+            var response = await _client.GetAsync("/api/v1/filial/1");
 
             // Assert
             response.StatusCode.Should().BeOneOf(HttpStatusCode.OK, HttpStatusCode.NotFound);
@@ -70,7 +71,7 @@ namespace MottuApi.Tests.Controllers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Act
-            var response = await _client.PostAsync("/api/filial", content);
+            var response = await _client.PostAsync("/api/v1/filial", content);
 
             // Assert
             response.StatusCode.Should().BeOneOf(HttpStatusCode.Created, HttpStatusCode.BadRequest);
@@ -97,7 +98,7 @@ namespace MottuApi.Tests.Controllers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Act
-            var response = await _client.PostAsync("/api/filial", content);
+            var response = await _client.PostAsync("/api/v1/filial", content);
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
@@ -124,7 +125,7 @@ namespace MottuApi.Tests.Controllers
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             // Act
-            var response = await _client.PutAsync("/api/filial/1", content);
+            var response = await _client.PutAsync("/api/v1/filial/1", content);
 
             // Assert
             response.StatusCode.Should().BeOneOf(HttpStatusCode.OK, HttpStatusCode.NotFound);
@@ -134,7 +135,7 @@ namespace MottuApi.Tests.Controllers
         public async Task Delete_WithValidId_ShouldReturnNoContent()
         {
             // Act
-            var response = await _client.DeleteAsync("/api/filial/1");
+            var response = await _client.DeleteAsync("/api/v1/filial/1");
 
             // Assert
             response.StatusCode.Should().BeOneOf(HttpStatusCode.NoContent, HttpStatusCode.NotFound);
@@ -144,7 +145,7 @@ namespace MottuApi.Tests.Controllers
         public async Task Ativar_WithValidId_ShouldReturnOk()
         {
             // Act
-            var response = await _client.PatchAsync("/api/filial/1/ativar", null);
+            var response = await _client.PatchAsync("/api/v1/filial/1/ativar", null);
 
             // Assert
             response.StatusCode.Should().BeOneOf(HttpStatusCode.OK, HttpStatusCode.NotFound);
@@ -154,7 +155,7 @@ namespace MottuApi.Tests.Controllers
         public async Task Desativar_WithValidId_ShouldReturnOk()
         {
             // Act
-            var response = await _client.PatchAsync("/api/filial/1/desativar", null);
+            var response = await _client.PatchAsync("/api/v1/filial/1/desativar", null);
 
             // Assert
             response.StatusCode.Should().BeOneOf(HttpStatusCode.OK, HttpStatusCode.NotFound);
