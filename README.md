@@ -35,7 +35,7 @@ MottuApi/
 │   ├── Controllers/
 │   │   ├── FilialController.cs     # 7 endpoints para filiais
 │   │   ├── MotoController.cs       # 9 endpoints para motos
-│   │   └── LocacaoController.cs    # 15 endpoints para locações
+│   │   └── LocacaoController.cs    # 16 endpoints para locações
 │   ├── Program.cs                  # Configuração da aplicação
 │   ├── appsettings.json           # Configurações
 │   └── Properties/
@@ -47,11 +47,13 @@ MottuApi/
 │   ├── Interfaces/
 │   │   ├── IFilialService.cs      # Interface do serviço de filiais
 │   │   ├── IMotoService.cs        # Interface do serviço de motos
-│   │   └── ILocacaoService.cs     # Interface do serviço de locações
+│   │   ├── ILocacaoService.cs     # Interface do serviço de locações
+│   │   └── ILocacaoPredictionService.cs # Interface do serviço de predição ML.NET
 │   ├── Services/
 │   │   ├── FilialService.cs       # Lógica de aplicação para filiais
 │   │   ├── MotoService.cs         # Lógica de aplicação para motos
-│   │   └── LocacaoService.cs      # Lógica de aplicação para locações
+│   │   ├── LocacaoService.cs      # Lógica de aplicação para locações
+│   │   └── LocacaoPredictionService.cs # Serviço de predição ML.NET
 │   └── Mappings/
 │       └── MappingProfile.cs      # Configuração do AutoMapper
 ├── MottuApi.Domain/               # Camada de Domínio
@@ -102,6 +104,8 @@ MottuApi/
 - **Swagger/OpenAPI 6.5.0**
 - **Health Checks**
 - **ASP.NET Core Web API**
+- **ML.NET 3.0.1** (Machine Learning)
+- **Microsoft.AspNetCore.Mvc.Versioning 5.1.0** (Versionamento)
 
 ## 🚀 Como Executar
 
@@ -234,6 +238,7 @@ Acesse a documentação interativa do Swagger em:
 ```bash
 curl -X POST "http://localhost:5001/api/v1/filial" \
   -H "Content-Type: application/json" \
+  -H "X-API-KEY: local-dev-key" \
   -d '{
     "nome": "Filial São Paulo",
     "logradouro": "Rua das Flores",
@@ -252,6 +257,7 @@ curl -X POST "http://localhost:5001/api/v1/filial" \
 ```bash
 curl -X POST "http://localhost:5001/api/v1/moto" \
   -H "Content-Type: application/json" \
+  -H "X-API-KEY: local-dev-key" \
   -d '{
     "placa": "ABC1234",
     "modelo": "Honda CG 160",
@@ -264,13 +270,15 @@ curl -X POST "http://localhost:5001/api/v1/moto" \
 ### Buscar Moto por Placa
 
 ```bash
-curl -X GET "http://localhost:5001/api/v1/moto/por-placa?placa=ABC1234"
+curl -X GET "http://localhost:5001/api/v1/moto/por-placa?placa=ABC1234" \
+  -H "X-API-KEY: local-dev-key"
 ```
 
 ### Marcar Moto como Indisponível
 
 ```bash
-curl -X PATCH "http://localhost:5001/api/v1/moto/1/indisponivel"
+curl -X PATCH "http://localhost:5001/api/v1/moto/1/indisponivel" \
+  -H "X-API-KEY: local-dev-key"
 ```
 
 ### Criar uma Locação
@@ -278,6 +286,7 @@ curl -X PATCH "http://localhost:5001/api/v1/moto/1/indisponivel"
 ```bash
 curl -X POST "http://localhost:5001/api/v1/locacao" \
   -H "Content-Type: application/json" \
+  -H "X-API-KEY: local-dev-key" \
   -d '{
     "motoId": 1,
     "filialId": 1,
@@ -293,13 +302,15 @@ curl -X POST "http://localhost:5001/api/v1/locacao" \
 ### Buscar Locações Ativas
 
 ```bash
-curl -X GET "http://localhost:5001/api/v1/locacao/ativas"
+curl -X GET "http://localhost:5001/api/v1/locacao/ativas" \
+  -H "X-API-KEY: local-dev-key"
 ```
 
 ### Finalizar Locação
 
 ```bash
-curl -X PATCH "http://localhost:5001/api/v1/locacao/1/finalizar"
+curl -X PATCH "http://localhost:5001/api/v1/locacao/1/finalizar" \
+  -H "X-API-KEY: local-dev-key"
 ```
 
 ### Testar Health Check
@@ -388,7 +399,8 @@ dotnet run
 ### Verificar se está funcionando
 
 ```bash
-curl -X GET "http://localhost:5001/api/v1/filial"
+curl -X GET "http://localhost:5001/api/v1/filial" \
+  -H "X-API-KEY: local-dev-key"
 ```
 
 ### Executar testes unitários
@@ -470,7 +482,7 @@ O projeto está configurado para usar MongoDB local ou Atlas:
 - [x] Health Check para MongoDB
 
 ### ✅ API RESTful
-- [x] 35 endpoints implementados
+- [x] 35 endpoints implementados (7 Filiais + 9 Motos + 16 Locações + 3 Health Check)
 - [x] Filiais: 7 endpoints (CRUD + ativar/desativar)
 - [x] Motos: 9 endpoints (CRUD + disponibilidade + busca por placa/filial)
 - [x] Locações: 16 endpoints (CRUD + operações específicas + relatórios + ML.NET)
@@ -563,7 +575,7 @@ cd MottuApi/MottuApi.Presentation
 dotnet run --urls "http://localhost:5001"
 
 # 3. Teste a API
-curl http://localhost:5001/api/v1/filial
+curl -H "X-API-KEY: local-dev-key" http://localhost:5001/api/v1/filial
 
 # 4. Acesse o Swagger
 open http://localhost:5001
